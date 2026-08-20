@@ -1,0 +1,14 @@
+# GitHub Linguist language overrides
+# Exclude generated datasets, build scripts, and bundled runtime files from language statistics
+
+frontend/productpilotai/src/generated/** linguist-generated=true
+frontend/productpilotai/scripts/** linguist-vendored=true
+frontend/productpilotai/electron/** linguist-vendored=true
+backend/productpilotai/agent/*.mjs linguist-vendored=true
+backend/productpilotai/server.mjs linguist-vendored=true
+server.mjs linguist-vendored=true
+test_frontend_integration.sh linguist-vendored=true
+deploy-all.sh linguist-vendored=true
+
+# Ensure Python is prioritized as core language
+*.py linguist-detectable=true
