@@ -23,12 +23,12 @@ function buildGeminiUrl(model, apiKey) {
 
 function getKeyError(apiKey) {
   if (!apiKey || apiKey === "YOUR_GOOGLE_AI_STUDIO_KEY_HERE") {
-    return "GEMINI_API_KEY not set in backend/taskpilotai/.env";
+    return "GEMINI_API_KEY not set in .env";
   }
   if (apiKey.length < 20) {
-    return "API key looks too short. Check backend/taskpilotai/.env";
+    return "API key looks too short. Check .env";
   }
-  return null; // Accept any non-empty key (AIzaSy... or AQ.... Vertex keys)
+  return null; // Accept any non-empty key (Vertex or AI Studio keys)
 }
 
 if (!gotSingleInstanceLock) {
@@ -54,7 +54,7 @@ function createMainWindow() {
     height: 940,
     minWidth: 1100,
     minHeight: 760,
-    title: "TaskPilot AI",
+    title: "ProductPilot AI",
     backgroundColor: "#f7f4ee",
     titleBarStyle: process.platform === "darwin" ? "hiddenInset" : "default",
     webPreferences: {
