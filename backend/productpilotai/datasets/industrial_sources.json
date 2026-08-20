@@ -1,0 +1,117 @@
+[
+  {
+    "id": "oem_datasheets",
+    "name": "OEM Technical Datasheets (PDF)",
+    "badge": "OEM Verified",
+    "count": 48,
+    "icon": "pdf",
+    "authority_weight": 0.98,
+    "description": "Primary manufacturer engineering specifications, torque curves, and dimension prints (Siemens, ABB, SKF, Bosch Rexroth, Festo).",
+    "items": [
+      {
+        "id": "SRC-OEM-01",
+        "title": "Siemens SIMOTICS GP Low-Voltage Motors D 81.1 Catalog",
+        "format": "PDF (Vector Tables)",
+        "pages": 128,
+        "processed_at": "2026-06-15T09:30:00Z",
+        "status": "INDEXED",
+        "confidence_avg": 0.99
+      },
+      {
+        "id": "SRC-OEM-02",
+        "title": "Bosch Rexroth RE 92711 Axial Piston Variable Pump Data Sheet",
+        "format": "PDF (Engineering Specs)",
+        "pages": 52,
+        "processed_at": "2026-06-01T11:00:00Z",
+        "status": "INDEXED",
+        "confidence_avg": 0.98
+      },
+      {
+        "id": "SRC-OEM-03",
+        "title": "Festo VZWD Directional Solenoid Valve Documentation",
+        "format": "PDF (CAD & Pneumatics)",
+        "pages": 24,
+        "processed_at": "2026-05-18T08:15:00Z",
+        "status": "INDEXED",
+        "confidence_avg": 0.99
+      },
+      {
+        "id": "SRC-OEM-04",
+        "title": "SKF Rolling Bearings Master Engineering Handbook 17000",
+        "format": "PDF (ISO Load Tables)",
+        "pages": 1150,
+        "processed_at": "2026-06-10T10:00:00Z",
+        "status": "INDEXED",
+        "confidence_avg": 0.99
+      }
+    ]
+  },
+  {
+    "id": "distributor_catalogs",
+    "name": "Distributor Web Catalogs",
+    "badge": "Distributor Sync",
+    "count": 142,
+    "icon": "globe",
+    "authority_weight": 0.65,
+    "description": "Scraped product listings and commercial attributes from Grainger, McMaster-Carr, RS Components, and Misumi.",
+    "items": [
+      {
+        "id": "SRC-DIST-01",
+        "title": "Grainger Industrial Motors & Drives Catalog Export",
+        "format": "HTML Scrape & JSON-LD",
+        "items_count": 840,
+        "processed_at": "2026-06-19T14:10:00Z",
+        "status": "DISCREPANCIES_DETECTED",
+        "confidence_avg": 0.84
+      },
+      {
+        "id": "SRC-DIST-02",
+        "title": "McMaster-Carr Fluid Power & Bearings Listings",
+        "format": "HTML Table Extractor",
+        "items_count": 1220,
+        "processed_at": "2026-06-18T16:45:00Z",
+        "status": "INDEXED",
+        "confidence_avg": 0.89
+      }
+    ]
+  },
+  {
+    "id": "erp_material_master",
+    "name": "Enterprise ERP & PIM Records",
+    "badge": "ERP Core",
+    "count": 650,
+    "icon": "database",
+    "authority_weight": 0.75,
+    "description": "Legacy SAP Material Master (MARA/MARC) and Akeneo PIM dumps with historical pricing and logistics data.",
+    "items": [
+      {
+        "id": "SRC-ERP-01",
+        "title": "SAP S/4HANA Plant 1000 Material Master Export",
+        "format": "CSV / IDoc Extract",
+        "items_count": 4500,
+        "processed_at": "2026-06-20T04:00:00Z",
+        "status": "INDEXED",
+        "confidence_avg": 0.91
+      }
+    ]
+  },
+  {
+    "id": "cad_drawings",
+    "name": "3D CAD & Engineering Prints",
+    "badge": "CAD Geometry",
+    "count": 85,
+    "icon": "layers",
+    "authority_weight": 0.94,
+    "description": "STEP, DWG, and DXF dimensional engineering prints containing physical bolt circles, shaft keyways, and mounting geometries.",
+    "items": [
+      {
+        "id": "SRC-CAD-01",
+        "title": "Siemens Frame 132M 3D STEP & Dimension Print",
+        "format": "STEP 3D / DWG 2D",
+        "processed_at": "2026-05-10T14:20:00Z",
+        "status": "VERIFIED_GEOMETRY",
+        "confidence_avg": 0.97
+      }
+    ]
+  }
+]
