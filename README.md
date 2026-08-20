@@ -29,6 +29,107 @@ ProductPilot provides four primary interaction paradigms tailored to enterprise 
 
 ---
 
+## System Architecture Diagram
+
+```mermaid
+graph TD
+    subgraph FrontendTier["Web App (Vite SPA / Electron Desktop)"]
+        UI_Root["ProductPilot User Interface"]
+        UI_Buyer["Autonomous AI Buyer Portal"]
+        UI_Manager["Catalog & Product Manager Studio"]
+        UI_Reviewer["Technical & Quality Review Console"]
+        UI_Admin["Agentic Terminal & Observability"]
+        UI_Root --> UI_Buyer
+        UI_Root --> UI_Manager
+        UI_Root --> UI_Reviewer
+        UI_Root --> UI_Admin
+    end
+
+    subgraph AgentOrchestration["Multi-Agent Cooperative Orchestration Network"]
+        Coordinator["Coordinator & Router Agent (ADK Core)"]
+        
+        Agent_Ingest["1. Source Ingestion Agent\n(Authority Provenance Scorer)"]
+        Agent_Extract["2. Product Extraction Agent\n(Multimodal Bounding-Box Extractor)"]
+        Agent_Enrich["3. Product Enrichment Agent\n(ARAG & Dual-Unit Normalizer)"]
+        Agent_Validate["4. Validation & Conflict Arbiter\n(Bayesian Conflict Resolver)"]
+        Agent_Commerce["5. Commerce Intelligence Agent\n(Intent & Taxonomy Synthesizer)"]
+        Agent_XAI["6. Explainability Evidence Agent\n(Trust Scorer & SHA-256 Attestor)"]
+        Agent_Razorpay["7. Razorpay Settlement Agent\n(Tiered Money-Action Guardrail)"]
+
+        Coordinator --> Agent_Ingest
+        Coordinator --> Agent_Extract
+        Coordinator --> Agent_Enrich
+        Coordinator --> Agent_Validate
+        Coordinator --> Agent_Commerce
+        Coordinator --> Agent_XAI
+        Coordinator --> Agent_Razorpay
+    end
+
+    subgraph BackendServices["Backend Microservices (FastAPI / Node.js / Cloud Run)"]
+        IngestEngine["Multi-Source Ingestion Engine\n(PDF, CAD, ERP, Catalogs)"]
+        SyncEngine["Real-Time State Sync Engine"]
+        APIServer["FastAPI & Express REST API Server"]
+        AuditEngine["Cryptographic Audit Trail Engine"]
+        PaymentEngine["Razorpay Webhook & Signature Engine"]
+    end
+
+    subgraph Infrastructure["AI Models, Data Acceleration & Cloud Infrastructure"]
+        Gemini["Google Gemini 2.5 Flash API\n(Multimodal Extraction & Reasoning)"]
+        NVIDIA["NVIDIA cuDF & Accelerated Compute\n(Vector Processing & Data Wrangling)"]
+        Supabase["PostgreSQL / Supabase DB\n(Catalog Store & Vector Index)"]
+        RazorpayGateway["Razorpay Payments Infrastructure\n(HMAC-SHA256 Signed Order Sessions)"]
+        CloudRun["Google Cloud Run Serverless Deployments"]
+    end
+
+    UI_Root <--> APIServer
+    APIServer <--> Coordinator
+    
+    Agent_Ingest --> IngestEngine
+    Agent_Extract --> Gemini
+    Agent_Enrich --> NVIDIA
+    Agent_Validate --> Supabase
+    Agent_Commerce --> Supabase
+    Agent_XAI --> AuditEngine
+    Agent_Razorpay --> PaymentEngine
+    
+    PaymentEngine <--> RazorpayGateway
+    AuditEngine --> Supabase
+    APIServer --> CloudRun
+```
+
+---
+
+## Multi-Agent Cooperative Dataflow & Execution Sequence
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Buyer as Autonomous AI Buyer / Merchant
+    participant Portal as ProductPilot Portal (Vite / Electron)
+    participant Coord as Coordinator Agent (ADK Router)
+    participant Agents as 7-Agent Cooperative Pipeline
+    participant DB as Supabase / Catalog Store
+    participant Razorpay as Razorpay API Gateway
+
+    Buyer->>Portal: Ingest Request / Procurement Query
+    Portal->>Coord: Dispatch Multi-Source Ingestion Job
+    Coord->>Agents: Ingest -> Extract -> Enrich -> Validate -> Commerce -> Evidence
+    Agents->>DB: Store Grounded Citations, Taxonomy & XAI Trust Score (98.0%)
+    Agents->>Coord: Return Verified Catalog Asset
+    Coord->>Portal: Display Conflict Resolution & Attestation
+    
+    opt Programmatic Purchase Execution
+        Buyer->>Portal: Request Bounded Checkout Session
+        Portal->>Coord: Trigger Razorpay Settlement Agent
+        Coord->>Coord: Evaluate Spending Cap & Policy Rules (100% Gated)
+        Coord->>Razorpay: Create Order Session (HMAC-SHA256)
+        Razorpay-->>Coord: Return Signed Payment Order
+        Coord->>Portal: Present Instant Settlement Attestation
+    end
+```
+
+---
+
 ## Multi-Agent Cooperative Architecture
 
 The pipeline coordinates a cooperative graph of seven specialized agents to transition raw engineering documents into verified, transactable digital assets:
