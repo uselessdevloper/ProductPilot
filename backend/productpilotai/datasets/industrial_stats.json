@@ -1,0 +1,40 @@
+{
+  "total_products_ingested": 1845,
+  "golden_records_verified": 1695,
+  "active_conflicts_pending": 18,
+  "resolved_conflicts_count": 135,
+  "avg_commerce_readiness": 96.8,
+  "etim_taxonomy_coverage_pct": 98.4,
+  "unspsc_mapping_coverage_pct": 99.2,
+  "source_breakdown": {
+    "oem_pdf_datasheets": 820,
+    "distributor_web_catalogs": 610,
+    "erp_material_master": 315,
+    "cad_engineering_prints": 100
+  },
+  "syndication_readiness": {
+    "shopify_plus_b2b": {
+      "ready_skus": 1720,
+      "compliance_pct": 97.5
+    },
+    "sap_commerce_cloud": {
+      "ready_skus": 1690,
+      "compliance_pct": 96.2
+    },
+    "akeneo_pim": {
+      "ready_skus": 1745,
+      "compliance_pct": 98.8
+    },
+    "mirakl_marketplace": {
+      "ready_skus": 1680,
+      "compliance_pct": 95.7
+    }
+  },
+  "pipeline_health": {
+    "gemini_multimodal_extractor": "OPERATIONAL",
+    "cudf_gpu_tabular_accelerator": "ACCELERATED (8.4x baseline)",
+    "vertex_ai_search_rag": "SYNCED",
+    "nim_microservice_taxonomy": "SUB_MS (4.2ms avg)"
+  },
+  "total_skus_ingested": 1251
+}
