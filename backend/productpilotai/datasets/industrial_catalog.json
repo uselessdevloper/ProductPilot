@@ -1,0 +1,1523 @@
+[
+  {
+    "id": "PROD-IND-1009",
+    "mpn": "INDUSTRIAL-PUMP-X200-REV1",
+    "sku": "APE-INDUSTRIAL-PUMP-X200",
+    "name": "Industrial Pump X200 (ApexFlow Series)",
+    "brand": "ApexFlow Industrial",
+    "category": "Fluid Handling & Mechanical",
+    "subCategory": "Industrial Machinery",
+    "status": "RESOLVED_CONFLICT",
+    "commerce_readiness_score": 95.8,
+    "taxonomies": {
+      "unspsc": "40151500",
+      "unspsc_title": "Industrial Machinery Equipment",
+      "etim_class": "EC011492",
+      "etim_version": "8.0",
+      "etim_title": "Industrial Machinery and Fluid Equipment",
+      "eclass": "27-18-07-01"
+    },
+    "hero_image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80",
+    "description": "Commerce-ready synchronized industrial product intelligence for Industrial Pump X200 (ApexFlow Series). Extracted from URL and technical datasheet ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages).",
+    "attributes": {
+      "weight": {
+        "name": "Net Weight",
+        "value": "14.2",
+        "unit": "kg",
+        "alt_value": "31.3 lbs",
+        "status": "RESOLVED_CONFLICT",
+        "confidence": 0.96,
+        "sources_count": 3,
+        "conflicts_count": 1,
+        "resolution_reasoning": "Extracted from uploaded ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages). Reconciled standard mounting weight against distributor webpage.",
+        "provenance": {
+          "source_id": "SRC-UPLOADED-PDF",
+          "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+          "source_type": "Uploaded Technical Datasheet (PDF)",
+          "page": 2,
+          "bounding_box": [
+            120,
+            210,
+            320,
+            240
+          ],
+          "snippet": "Net dry operating weight: 14.2 kg (extracted from ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages))",
+          "timestamp": "2026-08-20T14:31:03.321Z"
+        },
+        "conflict_details": {
+          "attribute_key": "weight",
+          "resolved_value": "14.2 kg",
+          "sources": [
+            {
+              "source_id": "SRC-UPLOADED-PDF",
+              "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+              "source_type": "Uploaded Engineering PDF",
+              "authority_weight": 0.95,
+              "value": "14.2 kg",
+              "page": 2,
+              "is_selected": true,
+              "notes": "Primary technical vector document"
+            },
+            {
+              "source_id": "SRC-WEB-URL",
+              "source_name": "https://apexflow-industrial.com/products/centrifugal-pump-x200",
+              "source_type": "Webpage HTML",
+              "authority_weight": 0.6,
+              "value": "13.8 kg",
+              "page": 1,
+              "is_selected": false,
+              "notes": "Web summary omitted hardware"
+            }
+          ]
+        }
+      },
+      "material": {
+        "name": "Body Material",
+        "value": "Stainless Steel (SS304 / 1.4301)",
+        "unit": "Grade SS304",
+        "alt_value": "AISI 304",
+        "status": "RESOLVED_CONFLICT",
+        "confidence": 0.98,
+        "sources_count": 2,
+        "conflicts_count": 1,
+        "resolution_reasoning": "Standardized generic alloy from webpage to specific metallurgical grade SS304 from technical document.",
+        "provenance": {
+          "source_id": "SRC-UPLOADED-PDF",
+          "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+          "source_type": "Uploaded Technical Datasheet (PDF)",
+          "page": 2,
+          "bounding_box": [
+            120,
+            250,
+            320,
+            275
+          ],
+          "snippet": "Wetted body material: AISI 304 Stainless Steel (SS304 / 1.4301)",
+          "timestamp": "2026-08-20T14:31:03.321Z"
+        }
+      },
+      "operating_voltage": {
+        "name": "Supply Voltage",
+        "value": "240 / 400",
+        "unit": "V AC",
+        "alt_value": "240V/400V 3-Phase",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 2,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-UPLOADED-PDF",
+          "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+          "source_type": "Uploaded Technical Datasheet (PDF)",
+          "page": 3,
+          "bounding_box": [
+            120,
+            290,
+            320,
+            315
+          ],
+          "snippet": "Rated supply voltage: 240/400 V AC, 50/60 Hz, IP55 enclosure",
+          "timestamp": "2026-08-20T14:31:03.321Z"
+        }
+      }
+    },
+    "syndication_channels": {
+      "sap_commerce": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "shopify_b2b": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "akeneo_pim": {
+        "status": "READY",
+        "readiness_score": 98
+      },
+      "mirakl_marketplace": {
+        "status": "READY",
+        "readiness_score": 96
+      }
+    }
+  },
+  {
+    "id": "PROD-IND-1008",
+    "mpn": "INDUSTRIAL-PUMP-X200-REV1",
+    "sku": "APE-INDUSTRIAL-PUMP-X200",
+    "name": "Industrial Pump X200 (ApexFlow Series)",
+    "brand": "ApexFlow Industrial",
+    "category": "Fluid Handling & Mechanical",
+    "subCategory": "Industrial Machinery",
+    "status": "RESOLVED_CONFLICT",
+    "commerce_readiness_score": 95.8,
+    "taxonomies": {
+      "unspsc": "40151500",
+      "unspsc_title": "Industrial Machinery Equipment",
+      "etim_class": "EC011492",
+      "etim_version": "8.0",
+      "etim_title": "Industrial Machinery and Fluid Equipment",
+      "eclass": "27-18-07-01"
+    },
+    "hero_image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80",
+    "description": "Commerce-ready synchronized industrial product intelligence for Industrial Pump X200 (ApexFlow Series). Extracted from URL and technical datasheet ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages).",
+    "attributes": {
+      "weight": {
+        "name": "Net Weight",
+        "value": "14.2",
+        "unit": "kg",
+        "alt_value": "31.3 lbs",
+        "status": "RESOLVED_CONFLICT",
+        "confidence": 0.96,
+        "sources_count": 3,
+        "conflicts_count": 1,
+        "resolution_reasoning": "Extracted from uploaded ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages). Reconciled standard mounting weight against distributor webpage.",
+        "provenance": {
+          "source_id": "SRC-UPLOADED-PDF",
+          "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+          "source_type": "Uploaded Technical Datasheet (PDF)",
+          "page": 2,
+          "bounding_box": [
+            120,
+            210,
+            320,
+            240
+          ],
+          "snippet": "Net dry operating weight: 14.2 kg (extracted from ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages))",
+          "timestamp": "2026-08-16T20:20:17.311Z"
+        },
+        "conflict_details": {
+          "attribute_key": "weight",
+          "resolved_value": "14.2 kg",
+          "sources": [
+            {
+              "source_id": "SRC-UPLOADED-PDF",
+              "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+              "source_type": "Uploaded Engineering PDF",
+              "authority_weight": 0.95,
+              "value": "14.2 kg",
+              "page": 2,
+              "is_selected": true,
+              "notes": "Primary technical vector document"
+            },
+            {
+              "source_id": "SRC-WEB-URL",
+              "source_name": "https://apexflow-industrial.com/products/centrifugal-pump-x200",
+              "source_type": "Webpage HTML",
+              "authority_weight": 0.6,
+              "value": "13.8 kg",
+              "page": 1,
+              "is_selected": false,
+              "notes": "Web summary omitted hardware"
+            }
+          ]
+        }
+      },
+      "material": {
+        "name": "Body Material",
+        "value": "Stainless Steel (SS304 / 1.4301)",
+        "unit": "Grade SS304",
+        "alt_value": "AISI 304",
+        "status": "RESOLVED_CONFLICT",
+        "confidence": 0.98,
+        "sources_count": 2,
+        "conflicts_count": 1,
+        "resolution_reasoning": "Standardized generic alloy from webpage to specific metallurgical grade SS304 from technical document.",
+        "provenance": {
+          "source_id": "SRC-UPLOADED-PDF",
+          "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+          "source_type": "Uploaded Technical Datasheet (PDF)",
+          "page": 2,
+          "bounding_box": [
+            120,
+            250,
+            320,
+            275
+          ],
+          "snippet": "Wetted body material: AISI 304 Stainless Steel (SS304 / 1.4301)",
+          "timestamp": "2026-08-16T20:20:17.311Z"
+        }
+      },
+      "operating_voltage": {
+        "name": "Supply Voltage",
+        "value": "240 / 400",
+        "unit": "V AC",
+        "alt_value": "240V/400V 3-Phase",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 2,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-UPLOADED-PDF",
+          "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+          "source_type": "Uploaded Technical Datasheet (PDF)",
+          "page": 3,
+          "bounding_box": [
+            120,
+            290,
+            320,
+            315
+          ],
+          "snippet": "Rated supply voltage: 240/400 V AC, 50/60 Hz, IP55 enclosure",
+          "timestamp": "2026-08-16T20:20:17.311Z"
+        }
+      }
+    },
+    "syndication_channels": {
+      "sap_commerce": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "shopify_b2b": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "akeneo_pim": {
+        "status": "READY",
+        "readiness_score": 98
+      },
+      "mirakl_marketplace": {
+        "status": "READY",
+        "readiness_score": 96
+      }
+    }
+  },
+  {
+    "id": "PROD-IND-1007",
+    "mpn": "INDUSTRIAL-PUMP-X200-REV1",
+    "sku": "APE-INDUSTRIAL-PUMP-X200",
+    "name": "Industrial Pump X200 (ApexFlow Series)",
+    "brand": "ApexFlow Industrial",
+    "category": "Fluid Handling & Mechanical",
+    "subCategory": "Industrial Machinery",
+    "status": "RESOLVED_CONFLICT",
+    "commerce_readiness_score": 95.8,
+    "taxonomies": {
+      "unspsc": "40151500",
+      "unspsc_title": "Industrial Machinery Equipment",
+      "etim_class": "EC011492",
+      "etim_version": "8.0",
+      "etim_title": "Industrial Machinery and Fluid Equipment",
+      "eclass": "27-18-07-01"
+    },
+    "hero_image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80",
+    "description": "Commerce-ready synchronized industrial product intelligence for Industrial Pump X200 (ApexFlow Series). Extracted from URL and technical datasheet ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages).",
+    "attributes": {
+      "weight": {
+        "name": "Net Weight",
+        "value": "14.2",
+        "unit": "kg",
+        "alt_value": "31.3 lbs",
+        "status": "RESOLVED_CONFLICT",
+        "confidence": 0.96,
+        "sources_count": 3,
+        "conflicts_count": 1,
+        "resolution_reasoning": "Extracted from uploaded ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages). Reconciled standard mounting weight against distributor webpage.",
+        "provenance": {
+          "source_id": "SRC-UPLOADED-PDF",
+          "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+          "source_type": "Uploaded Technical Datasheet (PDF)",
+          "page": 2,
+          "bounding_box": [
+            120,
+            210,
+            320,
+            240
+          ],
+          "snippet": "Net dry operating weight: 14.2 kg (extracted from ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages))",
+          "timestamp": "2026-08-16T20:13:50.883Z"
+        },
+        "conflict_details": {
+          "attribute_key": "weight",
+          "resolved_value": "14.2 kg",
+          "sources": [
+            {
+              "source_id": "SRC-UPLOADED-PDF",
+              "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+              "source_type": "Uploaded Engineering PDF",
+              "authority_weight": 0.95,
+              "value": "14.2 kg",
+              "page": 2,
+              "is_selected": true,
+              "notes": "Primary technical vector document"
+            },
+            {
+              "source_id": "SRC-WEB-URL",
+              "source_name": "https://apexflow-industrial.com/products/centrifugal-pump-x200",
+              "source_type": "Webpage HTML",
+              "authority_weight": 0.6,
+              "value": "13.8 kg",
+              "page": 1,
+              "is_selected": false,
+              "notes": "Web summary omitted hardware"
+            }
+          ]
+        }
+      },
+      "material": {
+        "name": "Body Material",
+        "value": "Stainless Steel (SS304 / 1.4301)",
+        "unit": "Grade SS304",
+        "alt_value": "AISI 304",
+        "status": "RESOLVED_CONFLICT",
+        "confidence": 0.98,
+        "sources_count": 2,
+        "conflicts_count": 1,
+        "resolution_reasoning": "Standardized generic alloy from webpage to specific metallurgical grade SS304 from technical document.",
+        "provenance": {
+          "source_id": "SRC-UPLOADED-PDF",
+          "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+          "source_type": "Uploaded Technical Datasheet (PDF)",
+          "page": 2,
+          "bounding_box": [
+            120,
+            250,
+            320,
+            275
+          ],
+          "snippet": "Wetted body material: AISI 304 Stainless Steel (SS304 / 1.4301)",
+          "timestamp": "2026-08-16T20:13:50.883Z"
+        }
+      },
+      "operating_voltage": {
+        "name": "Supply Voltage",
+        "value": "240 / 400",
+        "unit": "V AC",
+        "alt_value": "240V/400V 3-Phase",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 2,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-UPLOADED-PDF",
+          "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+          "source_type": "Uploaded Technical Datasheet (PDF)",
+          "page": 3,
+          "bounding_box": [
+            120,
+            290,
+            320,
+            315
+          ],
+          "snippet": "Rated supply voltage: 240/400 V AC, 50/60 Hz, IP55 enclosure",
+          "timestamp": "2026-08-16T20:13:50.883Z"
+        }
+      }
+    },
+    "syndication_channels": {
+      "sap_commerce": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "shopify_b2b": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "akeneo_pim": {
+        "status": "READY",
+        "readiness_score": 98
+      },
+      "mirakl_marketplace": {
+        "status": "READY",
+        "readiness_score": 96
+      }
+    }
+  },
+  {
+    "id": "PROD-IND-1000",
+    "mpn": "X200-SS304-240V",
+    "sku": "PMP-IND-X200",
+    "name": "Industrial Pump X200 (ApexFlow Heavy-Duty Centrifugal Pump, SS304, 240V, 350 L/min)",
+    "brand": "ApexFlow Industrial",
+    "category": "Pumps & Fluid Handling",
+    "subCategory": "Centrifugal Process Pumps",
+    "status": "RESOLVED_CONFLICT",
+    "commerce_readiness_score": 99.2,
+    "taxonomies": {
+      "unspsc": "40151503",
+      "unspsc_title": "Centrifugal Pumps",
+      "etim_class": "EC011492",
+      "etim_version": "8.0",
+      "etim_title": "Centrifugal pump",
+      "eclass": "27-18-07-01"
+    },
+    "hero_image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80",
+    "description": "High-efficiency corrosion-resistant single-stage centrifugal pump for industrial water treatment, chemical processing, and sanitary fluids.",
+    "attributes": {
+      "weight": {
+        "name": "Net Weight",
+        "value": "12.5",
+        "unit": "kg",
+        "alt_value": "27.56 lbs",
+        "status": "RESOLVED_CONFLICT",
+        "confidence": 0.96,
+        "sources_count": 3,
+        "conflicts_count": 1,
+        "resolution_reasoning": "Technical Datasheet specifies 12.5 kg with standard mounting base and mechanical seal chamber. Website 12.0 kg listing omitted mounting bracket.",
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-PUMP",
+          "source_name": "ApexFlow X200 Technical Engineering Datasheet (50-Page PDF)",
+          "source_type": "Technical Datasheet (PDF)",
+          "page": 4,
+          "bounding_box": [
+            115,
+            230,
+            310,
+            255
+          ],
+          "snippet": "Net dry operating weight: 12.5 kg (including standard mounting base and seal assembly)",
+          "timestamp": "2026-06-18T10:00:00Z"
+        },
+        "conflict_details": {
+          "attribute_key": "weight",
+          "resolved_value": "12.5 kg",
+          "sources": [
+            {
+              "source_id": "SRC-OEM-PDF-PUMP",
+              "source_name": "Technical Datasheet (50-Page PDF)",
+              "source_type": "OEM Engineering Spec",
+              "authority_weight": 0.95,
+              "value": "12.5 kg",
+              "page": 4,
+              "is_selected": true,
+              "notes": "Includes verified mounting bracket and reinforced mechanical seal"
+            },
+            {
+              "source_id": "SRC-WEB-DIST",
+              "source_name": "Product Webpage / E-Catalog",
+              "source_type": "Website Listing (HTML)",
+              "authority_weight": 0.6,
+              "value": "12.0 kg",
+              "page": 1,
+              "is_selected": false,
+              "notes": "Omitted baseplate and flange hardware in summary table"
+            },
+            {
+              "source_id": "SRC-CAT-OLD",
+              "source_name": "Old Product Catalog (2020 Edition)",
+              "source_type": "Legacy Printed Catalog",
+              "authority_weight": 0.5,
+              "value": "11.8 kg",
+              "page": 12,
+              "is_selected": false,
+              "notes": "Outdated 2020 revision prior to reinforced stainless casting upgrade"
+            }
+          ]
+        }
+      },
+      "material": {
+        "name": "Wetted Body Material",
+        "value": "Stainless Steel (SS304 / 1.4301)",
+        "unit": "Grade SS304",
+        "alt_value": "AISI 304 Stainless Steel",
+        "status": "RESOLVED_CONFLICT",
+        "confidence": 0.98,
+        "sources_count": 3,
+        "conflicts_count": 1,
+        "resolution_reasoning": "Standardized generic 'Stainless Steel' from old catalog to exact metallurgical grade SS304 (AISI 304 / EN 1.4301) as confirmed in OEM technical datasheet and supplier certification.",
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-PUMP",
+          "source_name": "ApexFlow X200 Technical Engineering Datasheet",
+          "source_type": "Technical Datasheet (PDF)",
+          "page": 4,
+          "bounding_box": [
+            115,
+            270,
+            310,
+            295
+          ],
+          "snippet": "Pump casing & wetted impeller material: AISI 304 Stainless Steel (SS304 / 1.4301)",
+          "timestamp": "2026-06-18T10:00:00Z"
+        },
+        "conflict_details": {
+          "attribute_key": "material",
+          "resolved_value": "Stainless Steel (Grade SS304 / 1.4301)",
+          "sources": [
+            {
+              "source_id": "SRC-OEM-PDF-PUMP",
+              "source_name": "Technical Datasheet (50-Page PDF)",
+              "source_type": "OEM Engineering Spec",
+              "authority_weight": 0.98,
+              "value": "SS304 (AISI 304 / 1.4301)",
+              "page": 4,
+              "is_selected": true,
+              "notes": "Exact metallurgical standard for sanitary and chemical processing"
+            },
+            {
+              "source_id": "SRC-CAT-OLD",
+              "source_name": "Old Product Catalog",
+              "source_type": "Legacy Printed Catalog",
+              "authority_weight": 0.65,
+              "value": "Stainless Steel",
+              "page": 12,
+              "is_selected": false,
+              "notes": "Generic umbrella term; refined to specific SS304 alloy"
+            },
+            {
+              "source_id": "SRC-SUPPLIER-DOC",
+              "source_name": "Supplier Material Mill Certificate",
+              "source_type": "Supplier Documentation",
+              "authority_weight": 0.92,
+              "value": "Austenitic Stainless Steel 304",
+              "page": 1,
+              "is_selected": false,
+              "notes": "Corroborates SS304 alloy composition"
+            }
+          ]
+        }
+      },
+      "voltage": {
+        "name": "Operating Voltage",
+        "value": "240",
+        "unit": "V AC",
+        "alt_value": "240V 1-Phase 50/60Hz",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-PUMP",
+          "source_name": "ApexFlow X200 Technical Engineering Datasheet",
+          "source_type": "Technical Datasheet (PDF)",
+          "page": 5,
+          "bounding_box": [
+            115,
+            310,
+            310,
+            335
+          ],
+          "snippet": "Supply voltage: 240 V AC ±10%, single phase 50/60 Hz, IP55 enclosure",
+          "timestamp": "2026-06-18T10:00:00Z"
+        }
+      },
+      "max_flow_rate": {
+        "name": "Max Flow Rate",
+        "value": "350",
+        "unit": "L/min",
+        "alt_value": "92.5 GPM",
+        "status": "VERIFIED",
+        "confidence": 0.97,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-PUMP",
+          "source_name": "ApexFlow X200 Technical Engineering Datasheet",
+          "source_type": "Technical Datasheet (PDF)",
+          "page": 6,
+          "bounding_box": [
+            150,
+            180,
+            350,
+            205
+          ],
+          "snippet": "Peak volumetric flow rate Qmax = 350 L/min (21.0 m³/h)",
+          "timestamp": "2026-06-18T10:00:00Z"
+        }
+      },
+      "max_head": {
+        "name": "Max Delivery Head",
+        "value": "28",
+        "unit": "m",
+        "alt_value": "91.8 ft",
+        "status": "VERIFIED",
+        "confidence": 0.98,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-PUMP",
+          "source_name": "ApexFlow X200 Technical Engineering Datasheet",
+          "source_type": "Technical Datasheet (PDF)",
+          "page": 6,
+          "bounding_box": [
+            150,
+            220,
+            350,
+            245
+          ],
+          "snippet": "Maximum discharge head Hmax: 28 meters water column",
+          "timestamp": "2026-06-18T10:00:00Z"
+        }
+      }
+    },
+    "syndication_channels": {
+      "sap_commerce": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "shopify_b2b": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "akeneo_pim": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "mirakl_marketplace": {
+        "status": "READY",
+        "readiness_score": 98
+      }
+    }
+  },
+  {
+    "id": "PROD-IND-1001",
+    "mpn": "1LE1001-1DB43-4AA4",
+    "sku": "SIE-MTR-1LE1-75KW",
+    "name": "Siemens SIMOTICS GP 1LE1 AC Induction Motor (7.5 kW, 400V/690V, 1500 RPM, Frame 132M, IP55)",
+    "brand": "Siemens",
+    "category": "Electric Motors & Drives",
+    "subCategory": "AC Induction Motors",
+    "status": "RESOLVED_CONFLICT",
+    "commerce_readiness_score": 98.5,
+    "taxonomies": {
+      "unspsc": "26101100",
+      "unspsc_title": "Electric Motors",
+      "etim_class": "EC011320",
+      "etim_version": "8.0",
+      "etim_title": "Asynchronous motor",
+      "eclass": "27-02-21-01"
+    },
+    "hero_image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80",
+    "description": "Premium efficiency IE3 aluminum enclosed 3-phase asynchronous industrial motor engineered for pumps, fans, conveyors, and mechanical drives.",
+    "attributes": {
+      "rated_power": {
+        "name": "Rated Power",
+        "value": "7.5",
+        "unit": "kW",
+        "alt_value": "10.0 HP",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-01",
+          "source_name": "Siemens SIMOTICS GP Catalog (D 81.1 · 2024)",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 14,
+          "bounding_box": [
+            140,
+            220,
+            310,
+            245
+          ],
+          "snippet": "Rated Output PN at 50 Hz: 7.5 kW (IE3 Premium Efficiency)",
+          "timestamp": "2026-06-15T09:30:00Z"
+        }
+      },
+      "rated_voltage": {
+        "name": "Rated Voltage",
+        "value": "400/690",
+        "unit": "V AC",
+        "status": "VERIFIED",
+        "confidence": 0.98,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-01",
+          "source_name": "Siemens SIMOTICS GP Catalog (D 81.1 · 2024)",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 14,
+          "bounding_box": [
+            140,
+            250,
+            310,
+            275
+          ],
+          "snippet": "Operating Voltage: 400 V Δ / 690 V Y at 50 Hz",
+          "timestamp": "2026-06-15T09:30:00Z"
+        }
+      },
+      "weight": {
+        "name": "Net Weight",
+        "value": "58.0",
+        "unit": "kg",
+        "alt_value": "127.87 lbs",
+        "status": "RESOLVED_CONFLICT",
+        "confidence": 0.94,
+        "sources_count": 3,
+        "conflicts_count": 1,
+        "resolution_reasoning": "Selected 58.0 kg from 2024 OEM Technical Catalog over 54.5 kg in distributor HTML listing. 54.5 kg represents bare motor frame without terminal box.",
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-01",
+          "source_name": "Siemens SIMOTICS GP Catalog (D 81.1 · 2024)",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 18,
+          "bounding_box": [
+            420,
+            510,
+            580,
+            535
+          ],
+          "snippet": "Net weight with standard terminal box (IM B3): 58.0 kg",
+          "timestamp": "2026-06-15T09:30:00Z"
+        },
+        "conflict_details": {
+          "attribute_key": "weight",
+          "resolved_value": "58.0 kg",
+          "sources": [
+            {
+              "source_id": "SRC-OEM-PDF-01",
+              "source_name": "Siemens SIMOTICS GP Catalog 2024 (PDF)",
+              "source_type": "OEM Official Spec",
+              "authority_weight": 0.95,
+              "value": "58.0 kg",
+              "page": 18,
+              "is_selected": true,
+              "notes": "Includes standard terminal box and aluminum housing"
+            },
+            {
+              "source_id": "SRC-DIST-WEB-02",
+              "source_name": "Grainger Industrial Web Catalog",
+              "source_type": "Distributor Listing (HTML)",
+              "authority_weight": 0.65,
+              "value": "54.5 kg",
+              "page": 1,
+              "is_selected": false,
+              "notes": "Bare frame unboxed weight from older 2021 revision"
+            },
+            {
+              "source_id": "SRC-ERP-SAP-03",
+              "source_name": "Enterprise ERP Material Master (SAP)",
+              "source_type": "Legacy ERP Record",
+              "authority_weight": 0.7,
+              "value": "62.0 kg",
+              "page": 1,
+              "is_selected": false,
+              "notes": "Gross shipping weight including wooden pallet crate"
+            }
+          ]
+        }
+      },
+      "max_operating_temp": {
+        "name": "Max Operating Temp",
+        "value": "155",
+        "unit": "°C (Class F)",
+        "status": "VERIFIED",
+        "confidence": 0.97,
+        "sources_count": 2,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-01",
+          "source_name": "Siemens SIMOTICS GP Catalog 2024",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 15,
+          "bounding_box": [
+            140,
+            380,
+            310,
+            405
+          ],
+          "snippet": "Thermal class: 155 (F) utilized according to 130 (B)",
+          "timestamp": "2026-06-15T09:30:00Z"
+        }
+      },
+      "efficiency_class": {
+        "name": "Efficiency Class",
+        "value": "IE3 Premium",
+        "unit": "IEC 60034-30-1",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-01",
+          "source_name": "Siemens SIMOTICS GP Catalog 2024",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 14,
+          "bounding_box": [
+            140,
+            180,
+            310,
+            205
+          ],
+          "snippet": "Efficiency according to IEC 60034-30-1: IE3 (90.4% at 100% load)",
+          "timestamp": "2026-06-15T09:30:00Z"
+        }
+      },
+      "protection_rating": {
+        "name": "Ingress Protection",
+        "value": "IP55",
+        "unit": "IEC 60034-5",
+        "status": "VERIFIED",
+        "confidence": 0.98,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-01",
+          "source_name": "Siemens SIMOTICS GP Catalog 2024",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 14,
+          "bounding_box": [
+            140,
+            320,
+            310,
+            345
+          ],
+          "snippet": "Degree of protection according to EN 60034-5: IP55 standard",
+          "timestamp": "2026-06-15T09:30:00Z"
+        }
+      },
+      "flange_mounting": {
+        "name": "Mounting Type",
+        "value": "IM B3 (Foot Mount)",
+        "unit": "IEC 60034-7",
+        "status": "RESOLVED_CONFLICT",
+        "confidence": 0.91,
+        "sources_count": 2,
+        "conflicts_count": 1,
+        "resolution_reasoning": "Part number suffix -4AA4 indicates standard IM B3 foot-mounting. Secondary distributor catalog conflated with IM B5 flange option.",
+        "provenance": {
+          "source_id": "SRC-CAD-DWG-04",
+          "source_name": "Siemens 132M 3D CAD Drawing (DWG/STEP)",
+          "source_type": "Engineering CAD Model",
+          "page": 1,
+          "bounding_box": [
+            50,
+            50,
+            400,
+            400
+          ],
+          "snippet": "Configuration: IM B3 Foot mount base dimension 216x140mm",
+          "timestamp": "2026-05-10T14:20:00Z"
+        },
+        "conflict_details": {
+          "attribute_key": "flange_mounting",
+          "resolved_value": "IM B3 (Foot Mount)",
+          "sources": [
+            {
+              "source_id": "SRC-CAD-DWG-04",
+              "source_name": "Siemens 3D CAD STEP/DWG Model",
+              "source_type": "Engineering CAD Model",
+              "authority_weight": 0.92,
+              "value": "IM B3 (Foot Mount)",
+              "is_selected": true,
+              "notes": "Verified against physical bolt pattern: 216mm x 140mm"
+            },
+            {
+              "source_id": "SRC-DIST-WEB-02",
+              "source_name": "McMaster-Carr Catalog Listing",
+              "source_type": "Distributor Listing (HTML)",
+              "authority_weight": 0.6,
+              "value": "IM B35 (Foot & Flange Mount)",
+              "is_selected": false,
+              "notes": "Generic family listing mistakenly tagged with optional combo flange"
+            }
+          ]
+        }
+      }
+    },
+    "syndication_channels": {
+      "sap_commerce": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "shopify_b2b": {
+        "status": "READY",
+        "readiness_score": 98
+      },
+      "akeneo_pim": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "mirakl_marketplace": {
+        "status": "READY",
+        "readiness_score": 96
+      }
+    }
+  },
+  {
+    "id": "PROD-IND-1002",
+    "mpn": "A10VSO45DFR1/31R-PPA12N00",
+    "sku": "REX-HYD-A10VSO-45",
+    "name": "Bosch Rexroth Axial Piston Variable Pump A10VSO 45 (280 bar, 45 cm³/rev, DFR1 Pressure & Flow Controller)",
+    "brand": "Bosch Rexroth",
+    "category": "Hydraulics & Fluid Power",
+    "subCategory": "Axial Piston Pumps",
+    "status": "FLAGGED_REVIEW",
+    "commerce_readiness_score": 91.2,
+    "taxonomies": {
+      "unspsc": "40151503",
+      "unspsc_title": "Hydraulic Pumps",
+      "etim_class": "EC011492",
+      "etim_version": "8.0",
+      "etim_title": "Hydraulic pump",
+      "eclass": "27-18-07-02"
+    },
+    "hero_image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80",
+    "description": "High-pressure swashplate design axial piston variable pump for open circuit industrial and mobile hydraulic drives.",
+    "attributes": {
+      "displacement": {
+        "name": "Displacement",
+        "value": "45.0",
+        "unit": "cm³/rev",
+        "alt_value": "2.75 in³/rev",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-02",
+          "source_name": "Bosch Rexroth RE 92711 Data Sheet",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 4,
+          "bounding_box": [
+            120,
+            150,
+            350,
+            180
+          ],
+          "snippet": "Size 45: Geometric displacement Vg max = 45 cm³",
+          "timestamp": "2026-06-01T11:00:00Z"
+        }
+      },
+      "nominal_pressure": {
+        "name": "Nominal Pressure",
+        "value": "280",
+        "unit": "bar",
+        "alt_value": "4060 PSI",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-02",
+          "source_name": "Bosch Rexroth RE 92711 Data Sheet",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 5,
+          "bounding_box": [
+            120,
+            210,
+            350,
+            240
+          ],
+          "snippet": "Nominal pressure pN: 280 bar (4000 psi) / Maximum peak pressure pmax: 350 bar",
+          "timestamp": "2026-06-01T11:00:00Z"
+        }
+      },
+      "max_flow_rate": {
+        "name": "Max Flow Rate",
+        "value": "117.0",
+        "unit": "L/min",
+        "alt_value": "30.9 GPM",
+        "status": "PENDING_REVIEW",
+        "confidence": 0.82,
+        "sources_count": 3,
+        "conflicts_count": 1,
+        "resolution_reasoning": "Discrepancy detected between 50 Hz motor drive (1450 RPM = 65.2 L/min) and max permissible drive speed (2600 RPM = 117.0 L/min). Requires industrial engineering verification before syndication.",
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-02",
+          "source_name": "Bosch Rexroth RE 92711 Data Sheet",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 6,
+          "bounding_box": [
+            200,
+            340,
+            480,
+            370
+          ],
+          "snippet": "Flow rate qv max at n_nom = 2600 rpm: 117 L/min (at 1450 rpm: 65.2 L/min)",
+          "timestamp": "2026-06-01T11:00:00Z"
+        },
+        "conflict_details": {
+          "attribute_key": "max_flow_rate",
+          "resolved_value": "117.0 L/min @ 2600 RPM (65.2 L/min @ 1450 RPM)",
+          "sources": [
+            {
+              "source_id": "SRC-OEM-PDF-02",
+              "source_name": "Bosch Rexroth RE 92711 Data Sheet (PDF)",
+              "source_type": "OEM Official Spec",
+              "authority_weight": 0.95,
+              "value": "117.0 L/min (at max 2600 RPM)",
+              "page": 6,
+              "is_selected": true,
+              "notes": "Specifies maximum theoretical flow at peak rated rotational speed"
+            },
+            {
+              "source_id": "SRC-DIST-WEB-05",
+              "source_name": "Hydraulic Megastore Product Page",
+              "source_type": "Distributor Listing (HTML)",
+              "authority_weight": 0.65,
+              "value": "65.2 L/min (Standard 4-Pole Motor)",
+              "page": 1,
+              "is_selected": false,
+              "notes": "Distributor listed flow calculated strictly for 1450 RPM electric motor pairing"
+            }
+          ]
+        }
+      },
+      "shaft_type": {
+        "name": "Drive Shaft",
+        "value": "Splined Shaft ANSI B92.1a (P)",
+        "unit": "Standard",
+        "status": "VERIFIED",
+        "confidence": 0.96,
+        "sources_count": 2,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-02",
+          "source_name": "Bosch Rexroth RE 92711 Data Sheet",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 12,
+          "bounding_box": [
+            150,
+            410,
+            420,
+            435
+          ],
+          "snippet": "Shaft code P: Splined shaft 1 in 15T 16/32DP",
+          "timestamp": "2026-06-01T11:00:00Z"
+        }
+      },
+      "seal_material": {
+        "name": "Seals Material",
+        "value": "NBR (Nitrile Butadiene)",
+        "unit": "FKM optional",
+        "status": "VERIFIED",
+        "confidence": 0.95,
+        "sources_count": 2,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-02",
+          "source_name": "Bosch Rexroth RE 92711 Data Sheet",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 8,
+          "bounding_box": [
+            120,
+            110,
+            350,
+            135
+          ],
+          "snippet": "Seal code N: NBR seals suitable for mineral hydraulic oils (HLP)",
+          "timestamp": "2026-06-01T11:00:00Z"
+        }
+      }
+    },
+    "syndication_channels": {
+      "sap_commerce": {
+        "status": "FLAGGED",
+        "readiness_score": 88
+      },
+      "shopify_b2b": {
+        "status": "READY",
+        "readiness_score": 92
+      },
+      "akeneo_pim": {
+        "status": "FLAGGED",
+        "readiness_score": 90
+      },
+      "mirakl_marketplace": {
+        "status": "READY",
+        "readiness_score": 94
+      }
+    }
+  },
+  {
+    "id": "PROD-IND-1003",
+    "mpn": "VZWD-L-M22C-M-G14-20-V-1P4-8",
+    "sku": "FES-VLV-VZWD-G14",
+    "name": "Festo Directly Actuated Solenoid Valve VZWD (G1/4\", 2/2-Way, 0...8 bar, FKM Seal, 24V DC)",
+    "brand": "Festo",
+    "category": "Pneumatics & Automation",
+    "subCategory": "Solenoid Valves",
+    "status": "VERIFIED",
+    "commerce_readiness_score": 99.1,
+    "taxonomies": {
+      "unspsc": "40141603",
+      "unspsc_title": "Pneumatic Valves",
+      "etim_class": "EC011400",
+      "etim_version": "8.0",
+      "etim_title": "Directional valve (pneumatic)",
+      "eclass": "51-01-01-01"
+    },
+    "hero_image": "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=600&q=80",
+    "description": "Directly actuated 2/2-way brass solenoid valve designed for high switching cycles in neutral liquids, gases, and vacuum automation lines.",
+    "attributes": {
+      "operating_pressure": {
+        "name": "Operating Pressure",
+        "value": "0 - 8.0",
+        "unit": "bar",
+        "alt_value": "0 - 116 PSI",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-03",
+          "source_name": "Festo VZWD Technical Data Sheet 2025",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 2,
+          "bounding_box": [
+            110,
+            190,
+            320,
+            215
+          ],
+          "snippet": "Operating pressure: 0 ... 8 bar (Differential pressure not required)",
+          "timestamp": "2026-05-18T08:15:00Z"
+        }
+      },
+      "valve_function": {
+        "name": "Valve Function",
+        "value": "2/2-way, Closed, Single Solenoid (NC)",
+        "unit": "Standard",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-03",
+          "source_name": "Festo VZWD Technical Data Sheet 2025",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 2,
+          "bounding_box": [
+            110,
+            230,
+            320,
+            255
+          ],
+          "snippet": "Design: Directly actuated poppet valve, normally closed (NC)",
+          "timestamp": "2026-05-18T08:15:00Z"
+        }
+      },
+      "pneumatic_connection": {
+        "name": "Pneumatic Port",
+        "value": "G 1/4",
+        "unit": "ISO 228-1",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-03",
+          "source_name": "Festo VZWD Technical Data Sheet 2025",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 3,
+          "bounding_box": [
+            110,
+            280,
+            320,
+            305
+          ],
+          "snippet": "Pneumatic connection 1 and 2: Female thread G1/4",
+          "timestamp": "2026-05-18T08:15:00Z"
+        }
+      },
+      "coil_voltage": {
+        "name": "Operating Voltage",
+        "value": "24",
+        "unit": "V DC (6.8 W)",
+        "status": "VERIFIED",
+        "confidence": 0.98,
+        "sources_count": 2,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-03",
+          "source_name": "Festo VZWD Technical Data Sheet 2025",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 4,
+          "bounding_box": [
+            110,
+            350,
+            320,
+            375
+          ],
+          "snippet": "Nominal operating voltage: 24 V DC ±10%, Power consumption: 6.8 W",
+          "timestamp": "2026-05-18T08:15:00Z"
+        }
+      }
+    },
+    "syndication_channels": {
+      "sap_commerce": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "shopify_b2b": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "akeneo_pim": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "mirakl_marketplace": {
+        "status": "READY",
+        "readiness_score": 98
+      }
+    }
+  },
+  {
+    "id": "PROD-IND-1004",
+    "mpn": "6208-2RS1/C3",
+    "sku": "SKF-BRG-6208-C3",
+    "name": "SKF Explorer Deep Groove Ball Bearing 6208-2RS1/C3 (40x80x18 mm, Rubber Seals, C3 Clearance)",
+    "brand": "SKF",
+    "category": "Bearings & Power Transmission",
+    "subCategory": "Deep Groove Ball Bearings",
+    "status": "RESOLVED_CONFLICT",
+    "commerce_readiness_score": 97.8,
+    "taxonomies": {
+      "unspsc": "31171504",
+      "unspsc_title": "Ball Bearings",
+      "etim_class": "EC011404",
+      "etim_version": "8.0",
+      "etim_title": "Deep groove ball bearing",
+      "eclass": "23-05-08-01"
+    },
+    "hero_image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80",
+    "description": "Single row deep groove ball bearing with NBR contact seals on both sides and greater than normal internal radial clearance (C3).",
+    "attributes": {
+      "bore_diameter": {
+        "name": "Bore Diameter (d)",
+        "value": "40.0",
+        "unit": "mm",
+        "alt_value": "1.5748 in",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 4,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-04",
+          "source_name": "SKF Rolling Bearings Master Catalog 17000 EN",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 284,
+          "bounding_box": [
+            100,
+            140,
+            290,
+            165
+          ],
+          "snippet": "Principal dimensions: d = 40 mm, D = 80 mm, B = 18 mm",
+          "timestamp": "2026-06-10T10:00:00Z"
+        }
+      },
+      "dynamic_load_rating": {
+        "name": "Dynamic Load Rating (C)",
+        "value": "32.5",
+        "unit": "kN",
+        "alt_value": "7306 lbf",
+        "status": "RESOLVED_CONFLICT",
+        "confidence": 0.95,
+        "sources_count": 3,
+        "conflicts_count": 1,
+        "resolution_reasoning": "SKF Explorer upgraded design provides 32.5 kN dynamic rating in 2024 catalog vs older legacy ISO standard 30.7 kN from un-upgraded base specification.",
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-04",
+          "source_name": "SKF Rolling Bearings Master Catalog 17000 EN",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 284,
+          "bounding_box": [
+            295,
+            140,
+            480,
+            165
+          ],
+          "snippet": "Basic load ratings: Dynamic C = 32.5 kN, Static C0 = 19.0 kN",
+          "timestamp": "2026-06-10T10:00:00Z"
+        },
+        "conflict_details": {
+          "attribute_key": "dynamic_load_rating",
+          "resolved_value": "32.5 kN",
+          "sources": [
+            {
+              "source_id": "SRC-OEM-PDF-04",
+              "source_name": "SKF Rolling Bearings Master Catalog (PDF)",
+              "source_type": "OEM Official Spec",
+              "authority_weight": 0.98,
+              "value": "32.5 kN",
+              "page": 284,
+              "is_selected": true,
+              "notes": "Verified SKF Explorer premium steel heat-treatment upgrade rating"
+            },
+            {
+              "source_id": "SRC-DIST-WEB-07",
+              "source_name": "RS Components Online Listing",
+              "source_type": "Distributor Listing (HTML)",
+              "authority_weight": 0.65,
+              "value": "30.7 kN",
+              "page": 1,
+              "is_selected": false,
+              "notes": "Standard non-Explorer generic ISO standard calculation"
+            }
+          ]
+        }
+      },
+      "limiting_speed": {
+        "name": "Limiting Speed",
+        "value": "5600",
+        "unit": "r/min",
+        "status": "VERIFIED",
+        "confidence": 0.98,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-04",
+          "source_name": "SKF Rolling Bearings Master Catalog 17000 EN",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 284,
+          "bounding_box": [
+            520,
+            140,
+            680,
+            165
+          ],
+          "snippet": "Speed ratings: Reference speed = 18000 r/min, Limiting speed (contact seals) = 5600 r/min",
+          "timestamp": "2026-06-10T10:00:00Z"
+        }
+      }
+    },
+    "syndication_channels": {
+      "sap_commerce": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "shopify_b2b": {
+        "status": "READY",
+        "readiness_score": 98
+      },
+      "akeneo_pim": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "mirakl_marketplace": {
+        "status": "READY",
+        "readiness_score": 96
+      }
+    }
+  },
+  {
+    "id": "PROD-IND-1005",
+    "mpn": "ATV320U75N4B",
+    "sku": "SCH-VFD-ATV320-75KW",
+    "name": "Schneider Electric Altivar Machine ATV320 Variable Speed Drive (7.5 kW / 10 HP, 380...500V 3-Phase, Book Format)",
+    "brand": "Schneider Electric",
+    "category": "Industrial Automation & Drives",
+    "subCategory": "Variable Frequency Drives (VFD)",
+    "status": "RESOLVED_CONFLICT",
+    "commerce_readiness_score": 96,
+    "taxonomies": {
+      "unspsc": "39122001",
+      "unspsc_title": "Frequency Inverters",
+      "etim_class": "EC001857",
+      "etim_version": "8.0",
+      "etim_title": "Frequency converter",
+      "eclass": "27-02-31-01"
+    },
+    "hero_image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80",
+    "description": "Compact variable speed frequency inverter for 3-phase synchronous and asynchronous motors in complex machinery applications.",
+    "attributes": {
+      "motor_power_kw": {
+        "name": "Motor Power (Heavy Duty)",
+        "value": "7.5",
+        "unit": "kW",
+        "alt_value": "10.0 HP",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-05",
+          "source_name": "Schneider Electric Altivar 320 User Manual NVE41295",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 18,
+          "bounding_box": [
+            110,
+            160,
+            340,
+            185
+          ],
+          "snippet": "Motor power kW: 7.5 kW for heavy duty (150% overload for 60s)",
+          "timestamp": "2026-06-20T14:30:00Z"
+        }
+      },
+      "ip_degree_of_protection": {
+        "name": "Enclosure Rating",
+        "value": "IP20",
+        "unit": "IEC 61800-5-1",
+        "status": "RESOLVED_CONFLICT",
+        "confidence": 0.93,
+        "sources_count": 3,
+        "conflicts_count": 1,
+        "resolution_reasoning": "Book format ATV320U75N4B is IP20 open chassis for cabinet installation. Distributor website conflated with the ATV320...W enclosed IP66 variant.",
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-05",
+          "source_name": "Schneider Electric Altivar 320 User Manual NVE41295",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 22,
+          "bounding_box": [
+            110,
+            280,
+            340,
+            305
+          ],
+          "snippet": "IP degree of protection: IP20 according to IEC 61800-5-1 (Book form factor)",
+          "timestamp": "2026-06-20T14:30:00Z"
+        },
+        "conflict_details": {
+          "attribute_key": "ip_degree_of_protection",
+          "resolved_value": "IP20",
+          "sources": [
+            {
+              "source_id": "SRC-OEM-PDF-05",
+              "source_name": "Schneider Electric User Manual NVE41295 (PDF)",
+              "source_type": "OEM Official Spec",
+              "authority_weight": 0.98,
+              "value": "IP20",
+              "page": 22,
+              "is_selected": true,
+              "notes": "Book form factor drive for control cabinet panel mounting"
+            },
+            {
+              "source_id": "SRC-DIST-WEB-09",
+              "source_name": "AutomationDirect Catalog Search",
+              "source_type": "Distributor Listing (HTML)",
+              "authority_weight": 0.55,
+              "value": "IP66 / NEMA 4X",
+              "page": 1,
+              "is_selected": false,
+              "notes": "Incorrectly mapped to ATV320...W waterproof field variant"
+            }
+          ]
+        }
+      },
+      "communication_protocols": {
+        "name": "Embedded Fieldbus",
+        "value": "Modbus RTU, CANopen",
+        "unit": "EtherNet/IP, PROFINET optional",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 3,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-OEM-PDF-05",
+          "source_name": "Schneider Electric Altivar 320 User Manual NVE41295",
+          "source_type": "OEM Technical Datasheet (PDF)",
+          "page": 24,
+          "bounding_box": [
+            110,
+            320,
+            340,
+            345
+          ],
+          "snippet": "Integrated communication protocols: Modbus RTU serial link and CANopen on RJ45",
+          "timestamp": "2026-06-20T14:30:00Z"
+        }
+      }
+    },
+    "syndication_channels": {
+      "sap_commerce": {
+        "status": "READY",
+        "readiness_score": 96
+      },
+      "shopify_b2b": {
+        "status": "READY",
+        "readiness_score": 98
+      },
+      "akeneo_pim": {
+        "status": "READY",
+        "readiness_score": 96
+      },
+      "mirakl_marketplace": {
+        "status": "READY",
+        "readiness_score": 94
+      }
+    }
+  }
+]
