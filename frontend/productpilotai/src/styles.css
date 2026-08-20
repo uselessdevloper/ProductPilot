@@ -965,30 +965,52 @@ html, body {
 .pp-status-badge {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  font-weight: 800;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
   text-transform: uppercase;
-  padding: 3px 8px;
-  border-radius: 4px;
+  letter-spacing: 0.5px;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
 }
 
 .pp-status-badge.green {
-  background: rgba(16, 185, 129, 0.12);
+  background: rgba(21, 128, 61, 0.08);
   color: var(--accent-emerald);
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  border: 1px solid rgba(21, 128, 61, 0.25);
+  box-shadow: 0 0 8px rgba(21, 128, 61, 0.15);
 }
 
 .pp-status-badge.blue {
-  background: rgba(56, 189, 248, 0.12);
-  color: var(--accent-cyan);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(2, 132, 199, 0.08);
+  color: var(--accent-razorpay-blue);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  box-shadow: 0 0 8px rgba(2, 132, 199, 0.15);
 }
 
 .pp-status-badge.amber {
-  background: rgba(245, 158, 11, 0.12);
+  background: rgba(180, 83, 9, 0.08);
   color: var(--accent-amber);
-  border: 1px solid rgba(245, 158, 11, 0.25);
+  border: 1px solid rgba(180, 83, 9, 0.25);
+  box-shadow: 0 0 8px rgba(180, 83, 9, 0.15);
+}
+
+.pp-status-badge.green::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-emerald);
+  box-shadow: 0 0 6px var(--accent-emerald);
+  animation: pp-led-pulse 2s infinite ease-in-out;
+}
+
+@keyframes pp-led-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
 }
 
 .pp-mini-progress {
