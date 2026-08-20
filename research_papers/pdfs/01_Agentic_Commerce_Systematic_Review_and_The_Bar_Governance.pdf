@@ -1,0 +1,109 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 2346 >>
+stream
+BT
+/F1 16 Tf
+50 750 Td
+(Agentic Commerce: A Systematic Review of AI-Driven Marketplaces, Autonomous Prot) Tj
+0 -20 Td
+(ocols, and Financial Governance) Tj
+/F1 10 Tf
+0 -25 Td
+(Authors: Research Working Group on Agentic Commerce & Autonomous Systems) Tj
+0 -15 Td
+(Published in: Agentic Commerce Research Suite 2026) Tj
+/F1 12 Tf
+0 -25 Td
+(Abstract) Tj
+/F1 9 Tf
+0 -15 Td
+(This paper provides a comprehensive systematic review of autonomous multi-agent) Tj
+T*
+(systems operating in digital commerce. We formalize the transition from human-centric) Tj
+T*
+(graphical user interfaces to machine-to-machine agentic transactions. We establish) Tj
+T*
+('THE BAR' governance framework: requiring autonomous financial operations to be) Tj
+T*
+(Explainable, Bounded, Gated, Auditable, and Gracefully Recoverable. We analyze the) Tj
+T*
+(intersection of agentic procurement and instant settlement networks like Razorpay.) Tj
+T*
+
+/F1 11 Tf
+T*
+(1. Introduction and Problem Formulation) Tj
+/F1 9 Tf
+T*
+(The emergence of large multimodal models [LMMs] has enabled autonomous software) Tj
+T*
+(agents to perform complex procurement tasks previously reserved for human operators.) Tj
+T*
+(However, deploying autonomous buyers into production commerce environments introduces) Tj
+T*
+(severe financial and operational risks: unauthorized discounting, hallucinations, and) Tj
+T*
+(catastrophic payment cascade failures. We propose a formal taxonomy of agentic) Tj
+T*
+(commerce capabilities.) Tj
+T*
+
+/F1 11 Tf
+T*
+(2. The BAR Governance Framework) Tj
+/F1 9 Tf
+T*
+(We define the five cardinal pillars of safe agentic commerce: - Explainable: Every) Tj
+T*
+(parameter must have deterministic provenance. - Bounded: Financial actions must) Tj
+T*
+(operate strictly within clamped mathematical envelopes [P_min, P_max]. - Gated:) Tj
+T*
+(Tiered risk triggers mandatory multi-signature human approval. - Audit Trail:) Tj
+T*
+(Immutable SHA-256 state ledger linking every decision to source documents. - Graceful) Tj
+T*
+(Failure: Sub-200ms error containment with automated fallback links.) Tj
+T*
+
+/F1 11 Tf
+T*
+(3. Implementation in ProductPilot) Tj
+/F1 9 Tf
+T*
+(ProductPilot directly implements RQ2 [Accountability Chains], RQ3 [UAP Protocol) Tj
+T*
+(Compliance], and RQ4 [Composite XAI Trust Scoring] within its RazorpaySettlementAgent) Tj
+T*
+(and ExplainabilityAgent modules.) Tj
+T*
+ET
+
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000002639 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+2709
+%%EOF

@@ -45,7 +45,7 @@ class RazorpaySettlementAgent(BaseAgent):
         super().__init__(
             name="Razorpay Settlement Guardrail",
             provider="gemini",
-            model="gemini-2.5-flash",
+            model="gemini-3.6-flash",
             api_key_name="GEMINI_API_KEY"
         )
         # In-memory idempotency store (production would use Redis/DB)

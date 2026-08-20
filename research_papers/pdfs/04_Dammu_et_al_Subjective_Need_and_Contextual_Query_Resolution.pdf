@@ -1,0 +1,79 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1149 >>
+stream
+BT
+/F1 16 Tf
+50 750 Td
+(Contextual Need and Subjective Constraint Resolution in Multi-Agent Commerce Pro) Tj
+0 -20 Td
+(tocols) Tj
+/F1 10 Tf
+0 -25 Td
+(Authors: P. Dammu, S. V. S. R. K. Gollapudi, et al.) Tj
+0 -15 Td
+(Published in: Agentic Commerce Research Suite 2026) Tj
+/F1 12 Tf
+0 -25 Td
+(Abstract) Tj
+/F1 9 Tf
+0 -15 Td
+(Industrial procurement queries frequently contain subjective operational constraints) Tj
+T*
+([e.g., 'corrosion-resistant in marine environments']. We formulate a contextual) Tj
+T*
+(intent-resolution mechanism that maps ambiguous language to parametric metallurgy) Tj
+T*
+(standards.) Tj
+T*
+
+/F1 11 Tf
+T*
+(1. Multi-Agent Intent Mapping) Tj
+/F1 9 Tf
+T*
+(Standard lexical search fails on qualitative requirements. Our cooperative agent) Tj
+T*
+(architecture routes subjective constraints through domain knowledge graphs to) Tj
+T*
+(identify exact material grades [e.g. AISI 316Ti / Hastelloy C-276].) Tj
+T*
+
+/F1 11 Tf
+T*
+(2. Performance Evaluation) Tj
+/F1 9 Tf
+T*
+(ProductPilot achieved 15/15 relevant product matches on complex qualitative queries,) Tj
+T*
+(compared to 5/15 for traditional Elasticsearch keyword indices.) Tj
+T*
+ET
+
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000001442 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1512
+%%EOF

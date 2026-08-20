@@ -11,7 +11,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 function buildVertexUrl(model) {
-  const modelId = (model || "gemini-2.5-flash").replace(/^.*\//, "");
+  const modelId = (model || "gemini-3.6-flash").replace(/^.*\//, "");
   return `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent`;
 }
 
@@ -39,7 +39,7 @@ async function callProvider(provider, prompt, { model, maxTokens = 512, temperat
   } else {
     apiKey = process.env.GEMINI_API_KEY || "";
     if (!apiKey) throw new Error("GEMINI_API_KEY not set");
-    const useModel = model || process.env.LLM_MODEL || "gemini-2.5-flash";
+    const useModel = model || process.env.LLM_MODEL || "gemini-3.6-flash";
     url = buildVertexUrl(useModel) + `?key=${apiKey}`;
     headers = { "Content-Type": "application/json" };
     body = { contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { maxOutputTokens: maxTokens, temperature } };

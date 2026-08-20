@@ -48,7 +48,7 @@ class ProductExtractionAgent(BaseAgent):
         super().__init__(
             name="Product Extraction Agent",
             provider="gemini",
-            model="gemini-2.5-flash",
+            model="gemini-3.6-flash",
             api_key_name="GEMINI_API_KEY"
         )
         self.role = "Multi-Modal Technical Entity Extraction"

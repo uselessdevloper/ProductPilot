@@ -34,7 +34,7 @@ class ExplainabilityEvidenceAgent(BaseAgent):
         super().__init__(
             name="Explainability & Evidence Agent",
             provider="gemini",
-            model="gemini-2.5-flash",
+            model="gemini-3.6-flash",
             api_key_name="GEMINI_API_KEY"
         )
         self.role = "Provenance & Grounding Guard"

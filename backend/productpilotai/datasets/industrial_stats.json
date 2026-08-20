@@ -1,6 +1,6 @@
 {
   "total_products_ingested": 1845,
-  "golden_records_verified": 1695,
+  "golden_records_verified": 1696,
   "active_conflicts_pending": 18,
   "resolved_conflicts_count": 135,
   "avg_commerce_readiness": 96.8,
@@ -36,5 +36,5 @@
     "vertex_ai_search_rag": "SYNCED",
     "nim_microservice_taxonomy": "SUB_MS (4.2ms avg)"
   },
-  "total_skus_ingested": 1251
+  "total_skus_ingested": 1252
 }

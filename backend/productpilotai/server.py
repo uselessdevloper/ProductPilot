@@ -167,7 +167,7 @@ async def get_taskpilot_config():
         "supabaseUrl": os.getenv("SUPABASE_URL", ""),
         "supabaseAnonKey": "configured" if os.getenv("SUPABASE_ANON_KEY") else "",
         "backendPort": os.getenv("TASKPILOT_PORT", "8787"),
-        "llmModel": os.getenv("LLM_MODEL", "gemini-2.5-flash")
+        "llmModel": os.getenv("LLM_MODEL", "gemini-3.6-flash")
     }
 
 
@@ -176,7 +176,7 @@ async def call_gemini_py(prompt: str, max_tokens: int = 1024, temperature: float
     if not api_key:
         raise ValueError("GEMINI_API_KEY not configured")
         
-    model = os.getenv("LLM_MODEL", "gemini-2.5-flash")
+    model = os.getenv("LLM_MODEL", "gemini-3.6-flash")
     url = build_vertex_url(model) + f"?key={api_key}"
     
     headers = {"Content-Type": "application/json"}
@@ -205,7 +205,7 @@ async def post_gemini_chat(payload: GeminiChatPayload):
     if not api_key:
         return {"text": "TaskPilot AI API key not configured. Add GEMINI_API_KEY to backend/taskpilotai/.env"}
         
-    model = payload.model or os.getenv("LLM_MODEL", "gemini-2.5-flash")
+    model = payload.model or os.getenv("LLM_MODEL", "gemini-3.6-flash")
     url = build_vertex_url(model) + f"?key={api_key}"
     
     headers = {"Content-Type": "application/json"}
@@ -250,7 +250,7 @@ async def post_vision_summary(payload: VisionSummaryPayload):
     
     summary_text = ""
     if configured:
-        model = os.getenv("LLM_MODEL", "gemini-2.5-flash")
+        model = os.getenv("LLM_MODEL", "gemini-3.6-flash")
         url = build_vertex_url(model) + f"?key={api_key}"
         
         prompt = f"""You are TaskPilot AI — a secure, privacy-preserving desktop AI companion.
@@ -330,7 +330,7 @@ async def post_daily_report(payload: DailyReportPayload):
     if not api_key:
         return {"summary": "TaskPilot AI backend is not configured. Add GEMINI_API_KEY to generate report."}
         
-    model = os.getenv("LLM_MODEL", "gemini-2.5-flash")
+    model = os.getenv("LLM_MODEL", "gemini-3.6-flash")
     url = build_vertex_url(model) + f"?key={api_key}"
     
     completed = payload.completedTasks or []

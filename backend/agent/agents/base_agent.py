@@ -65,13 +65,13 @@ class BaseAgent:
                     # Adapt provider/model based on the fallback key
                     if fb in ("OPEN_ROUTER_API_KEY", "OPENROUTER_API_KEY"):
                         self.provider = "openrouter"
-                        self.model = "google/gemini-2.5-flash"
+                        self.model = "google/gemini-2.5-flash"  # OpenRouter model ID (not Google direct API)
                     elif fb == "NVIDIA_API_KEY":
                         self.provider = "nvidia"
                         self.model = "meta/llama-3.1-8b-instruct"
                     elif fb == "GEMINI_API_KEY":
                         self.provider = "gemini"
-                        self.model = "gemini-2.5-flash"
+                        self.model = "gemini-3.6-flash"
                     elif fb == "GROK_API_KEY":
                         self.provider = "grok"
                         self.model = "grok-3-mini"
@@ -152,7 +152,7 @@ class BaseAgent:
                     url = "https://openrouter.ai/api/v1/chat/completions"
                     headers = {"Content-Type": "application/json", "Authorization": f"Bearer {openrouter_key}"}
                     body = {
-                        "model": "google/gemini-2.5-flash",
+                        "model": "google/gemini-2.5-flash",  # OpenRouter model ID
                         "messages": [{"role": "user", "content": prompt}],
                         "temperature": temperature,
                         "max_tokens": min(max_tokens, 1024)

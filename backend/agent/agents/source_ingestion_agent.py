@@ -44,7 +44,7 @@ class SourceIngestionAgent(BaseAgent):
         super().__init__(
             name="Source Ingestion Agent",
             provider="gemini",
-            model="gemini-2.5-flash",
+            model="gemini-3.6-flash",
             api_key_name="GEMINI_API_KEY"
         )
         self.role = "Ingestion & Multi-Modal Preprocessing"

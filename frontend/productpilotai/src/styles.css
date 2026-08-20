@@ -180,49 +180,67 @@
 
 .pp-theme-toggle:hover {
   border-color: var(--border-medium);
+  transform: scale(1.04);
 }
 
-width: 36px;
-height: 36px;
-border-radius: 8px;
-background: var(--bg-surface);
-border: 1px solid var(--border-subtle);
-color: var(--text-primary);
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-transition: all 0.2s;
-}
-
-.pp-theme-toggle:hover {
-  border-color: var(--accent-cyan);
-  color: var(--accent-cyan);
-}
-
-.pp-btn-exit-landing {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 7px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.pp-btn-exit-landing:hover {
-  border-color: var(--accent-cyan);
+/* ─── Global Base Architecture ───────────────────────────────────────────── */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100vw;
+  font-family: var(--font-sans);
+  background: var(--bg-page);
   color: var(--text-primary);
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
-/* ─── Main Landing Page Hero (Nordic Editorial Minimalist) ───────────────────── */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* App dashboard is locked to 100vh single-page fixed viewport */
+.pp-app-root {
+  height: 100vh;
+  max-height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pp-main-viewport {
+  flex: 1;
+  min-height: 0;
+  height: calc(100vh - 64px);
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 14px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pp-screen-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ─── Main Landing Page (Full Hero, KPI Strip & Persona Hubs) ────────────── */
 .pp-landing-wrapper {
   position: relative;
   z-index: 1;
   min-height: 100vh;
   background: var(--bg-page);
+  overflow-y: visible;
+  display: block;
 }
 
 .pp-landing-nav {
@@ -493,24 +511,31 @@ transition: all 0.2s;
 
 .pp-personas-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: stretch;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1100px) {
+  .pp-personas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
   .pp-personas-grid {
     grid-template-columns: 1fr;
   }
 }
 
 .pp-persona-card {
-  background: var(--bg-glass-card);
-  backdrop-filter: blur(20px);
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-  padding: 30px;
+  border-radius: 20px;
+  padding: 26px 22px 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   box-shadow: var(--shadow-card);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -518,74 +543,76 @@ transition: all 0.2s;
 }
 
 .pp-persona-card:hover {
-  border-color: var(--border-focus);
+  border-color: var(--border-medium);
   transform: translateY(-4px);
-  box-shadow: 0 16px 40px -10px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.08);
 }
 
 .pp-persona-card.featured {
-  border-color: rgba(56, 189, 248, 0.35);
-  box-shadow: 0 12px 36px -8px rgba(56, 189, 248, 0.18);
+  border-color: rgba(255, 35, 75, 0.25);
+  background: linear-gradient(180deg, rgba(255, 35, 75, 0.02) 0%, var(--bg-surface) 100%);
 }
 
 .pp-persona-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .pp-persona-avatar {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  color: var(--accent-cyan);
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-primary);
+  font-size: 14px;
 }
 
 .pp-persona-badge {
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   padding: 4px 10px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--bg-surface-subtle);
   color: var(--text-secondary);
 }
 
 .pp-persona-badge.featured {
-  background: rgba(56, 189, 248, 0.15);
-  color: var(--accent-cyan);
+  background: rgba(255, 35, 75, 0.12);
+  color: var(--accent-solar-red);
 }
 
 .pp-persona-title {
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 18px;
+  font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 10px;
-  letter-spacing: -0.2px;
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
 }
 
 .pp-persona-desc {
-  font-size: 13.5px;
+  font-size: 12.5px;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 24px;
+  line-height: 1.55;
+  margin-bottom: 18px;
+  min-height: 58px;
 }
 
 .pp-persona-features {
   list-style: none;
   padding: 0;
-  margin: 0 0 28px;
+  margin: 0 0 22px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  font-size: 12.5px;
+  gap: 8px;
+  font-size: 12px;
   color: var(--text-primary);
 }
 
@@ -593,40 +620,54 @@ transition: all 0.2s;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  background: rgba(16, 185, 129, 0.15);
+  background: rgba(16, 185, 129, 0.12);
   color: var(--accent-emerald);
   flex-shrink: 0;
-  margin-right: 8px;
+  margin-right: 6px;
 }
 
 .pp-persona-btn-wrap {
   margin-top: auto;
+  padding-top: 12px;
 }
 
 .pp-persona-launch-btn {
   width: 100%;
-  padding: 12px 16px;
-  border-radius: 9px;
-  font-size: 13px;
+  padding: 10px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
   font-weight: 700;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  background: transparent;
   color: var(--text-primary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   transition: all 0.2s;
+  font-family: var(--font-sans);
 }
 
 .pp-persona-launch-btn:hover {
-  background: var(--accent-cyan);
-  color: #041220;
-  border-color: var(--accent-cyan);
+  background: var(--text-primary);
+  color: var(--bg-page);
+  border-color: var(--text-primary);
+}
+
+.pp-persona-launch-btn.primary {
+  background: var(--text-primary);
+  color: var(--bg-page);
+  border-color: var(--text-primary);
+}
+
+.pp-persona-launch-btn.primary:hover {
+  background: var(--accent-solar-red);
+  border-color: var(--accent-solar-red);
+  color: #ffffff;
 }
 
 /* ─── 6 Autonomous Agents Architecture Section ──────────────────────────────── */
@@ -2387,39 +2428,95 @@ transition: all 0.2s;
   color: white;
 }
 
-/* ─── Meridian Section 4: Market Neutral Statement (Image 5) ────────────────── */
+/* ─── Meridian Section 4: Market Neutral Statement (Balanced 2-Col Grid) ─────── */
 .pp-market-neutral-strip {
-  padding: 60px 0 80px;
+  padding: 70px 0;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 50px;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 56px;
   align-items: center;
   border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 70px;
 }
 
 @media (max-width: 900px) {
   .pp-market-neutral-strip {
     grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 50px 0;
   }
 }
 
-.pp-statement-lead {
-  font-family: var(--font-sans);
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 300;
-  letter-spacing: -1.5px;
-  line-height: 1.15;
-  color: var(--text-primary);
+.pp-statement-left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pp-research-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(21, 128, 61, 0.08);
+  border: 1px solid rgba(21, 128, 61, 0.25);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--accent-emerald);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
 }
 
 .pp-statement-sub-prose {
   font-family: var(--font-sans);
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.75;
+  margin-bottom: 24px;
 }
 
-transform: translateX(20px);
+.pp-market-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.pp-market-metric-cell strong {
+  display: block;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  font-family: var(--font-mono);
+}
+
+.pp-market-metric-cell span {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.pp-statement-right-col {
+  display: flex;
+  align-items: center;
+}
+
+.pp-statement-lead {
+  font-family: var(--font-sans);
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 300;
+  letter-spacing: -1.5px;
+  line-height: 1.18;
+  color: var(--text-primary);
+  margin: 0;
 }
 
 /* ─── Razorpay Test-Mode Payment Modal ──────────────────────────────────────── */
@@ -3109,10 +3206,97 @@ transform: translateX(20px);
   background: rgba(255, 94, 40, 0.06);
   border: 1px solid rgba(255, 94, 40, 0.2);
   border-radius: 16px;
-  padding: 18px 22px;
+  padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
   flex-wrap: wrap;
+}
+
+/* ─── Sleek Minimalist Scrollbars (No Outer Document Scroll) ─────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ─── Precision Single-Page Viewport & Card Alignments ───────────────────── */
+.pp-agentic-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 16px;
+  align-items: stretch;
+  min-height: 0;
+  flex: 1;
+}
+
+.pp-shopper-terminal-panel, .pp-product-checkout-panel {
+  max-height: calc(100vh - 230px);
+  overflow-y: auto;
+}
+
+.pp-chat-messages-scroll {
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.pp-table-wrapper {
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.pp-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.pp-section-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.pp-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.pp-razorpay-modal {
+  background: var(--bg-surface);
+  border-radius: 20px;
+  box-shadow: var(--shadow-modal);
+  max-width: 520px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid var(--border-subtle);
 }

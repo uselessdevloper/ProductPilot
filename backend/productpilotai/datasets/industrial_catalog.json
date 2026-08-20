@@ -1,5 +1,146 @@
 [
   {
+    "id": "PROD-IND-1010",
+    "mpn": "INDUSTRIAL-PUMP-X200-REV1",
+    "sku": "APE-INDUSTRIAL-PUMP-X200",
+    "name": "Industrial Pump X200 (ApexFlow Series)",
+    "brand": "ApexFlow Industrial",
+    "category": "Fluid Handling & Mechanical",
+    "subCategory": "Industrial Machinery",
+    "status": "RESOLVED_CONFLICT",
+    "commerce_readiness_score": 95.8,
+    "taxonomies": {
+      "unspsc": "40151500",
+      "unspsc_title": "Industrial Machinery Equipment",
+      "etim_class": "EC011492",
+      "etim_version": "8.0",
+      "etim_title": "Industrial Machinery and Fluid Equipment",
+      "eclass": "27-18-07-01"
+    },
+    "hero_image": "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80",
+    "description": "Commerce-ready synchronized industrial product intelligence for Industrial Pump X200 (ApexFlow Series). Extracted from URL and technical datasheet ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages).",
+    "attributes": {
+      "weight": {
+        "name": "Net Weight",
+        "value": "14.2",
+        "unit": "kg",
+        "alt_value": "31.3 lbs",
+        "status": "RESOLVED_CONFLICT",
+        "confidence": 0.96,
+        "sources_count": 3,
+        "conflicts_count": 1,
+        "resolution_reasoning": "Extracted from uploaded ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages). Reconciled standard mounting weight against distributor webpage.",
+        "provenance": {
+          "source_id": "SRC-UPLOADED-PDF",
+          "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+          "source_type": "Uploaded Technical Datasheet (PDF)",
+          "page": 2,
+          "bounding_box": [
+            120,
+            210,
+            320,
+            240
+          ],
+          "snippet": "Net dry operating weight: 14.2 kg (extracted from ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages))",
+          "timestamp": "2026-08-20T16:29:25.066Z"
+        },
+        "conflict_details": {
+          "attribute_key": "weight",
+          "resolved_value": "14.2 kg",
+          "sources": [
+            {
+              "source_id": "SRC-UPLOADED-PDF",
+              "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+              "source_type": "Uploaded Engineering PDF",
+              "authority_weight": 0.95,
+              "value": "14.2 kg",
+              "page": 2,
+              "is_selected": true,
+              "notes": "Primary technical vector document"
+            },
+            {
+              "source_id": "SRC-WEB-URL",
+              "source_name": "https://apexflow-industrial.com/products/centrifugal-pump-x200",
+              "source_type": "Webpage HTML",
+              "authority_weight": 0.6,
+              "value": "13.8 kg",
+              "page": 1,
+              "is_selected": false,
+              "notes": "Web summary omitted hardware"
+            }
+          ]
+        }
+      },
+      "material": {
+        "name": "Body Material",
+        "value": "Stainless Steel (SS304 / 1.4301)",
+        "unit": "Grade SS304",
+        "alt_value": "AISI 304",
+        "status": "RESOLVED_CONFLICT",
+        "confidence": 0.98,
+        "sources_count": 2,
+        "conflicts_count": 1,
+        "resolution_reasoning": "Standardized generic alloy from webpage to specific metallurgical grade SS304 from technical document.",
+        "provenance": {
+          "source_id": "SRC-UPLOADED-PDF",
+          "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+          "source_type": "Uploaded Technical Datasheet (PDF)",
+          "page": 2,
+          "bounding_box": [
+            120,
+            250,
+            320,
+            275
+          ],
+          "snippet": "Wetted body material: AISI 304 Stainless Steel (SS304 / 1.4301)",
+          "timestamp": "2026-08-20T16:29:25.066Z"
+        }
+      },
+      "operating_voltage": {
+        "name": "Supply Voltage",
+        "value": "240 / 400",
+        "unit": "V AC",
+        "alt_value": "240V/400V 3-Phase",
+        "status": "VERIFIED",
+        "confidence": 0.99,
+        "sources_count": 2,
+        "conflicts_count": 0,
+        "provenance": {
+          "source_id": "SRC-UPLOADED-PDF",
+          "source_name": "ApexFlow_X200_Technical_Datasheet_v4.2.pdf (50 pages)",
+          "source_type": "Uploaded Technical Datasheet (PDF)",
+          "page": 3,
+          "bounding_box": [
+            120,
+            290,
+            320,
+            315
+          ],
+          "snippet": "Rated supply voltage: 240/400 V AC, 50/60 Hz, IP55 enclosure",
+          "timestamp": "2026-08-20T16:29:25.066Z"
+        }
+      }
+    },
+    "syndication_channels": {
+      "sap_commerce": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "shopify_b2b": {
+        "status": "READY",
+        "readiness_score": 100
+      },
+      "akeneo_pim": {
+        "status": "READY",
+        "readiness_score": 98
+      },
+      "mirakl_marketplace": {
+        "status": "READY",
+        "readiness_score": 96
+      }
+    }
+  },
+  {
     "id": "PROD-IND-1009",
     "mpn": "INDUSTRIAL-PUMP-X200-REV1",
     "sku": "APE-INDUSTRIAL-PUMP-X200",

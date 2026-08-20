@@ -11,7 +11,7 @@ class TaskPrioritizer:
     def __init__(self):
         # Configure API key
         self.api_key = os.getenv("GEMINI_API_KEY") or ""
-        self.model_name = os.getenv("LLM_MODEL") or "gemini-2.5-flash"
+        self.model_name = os.getenv("LLM_MODEL") or "gemini-3.6-flash"
         self.model = True if self.api_key else None
 
         # Priority weights from environment variables
