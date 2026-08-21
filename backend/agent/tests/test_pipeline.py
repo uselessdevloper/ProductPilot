@@ -656,6 +656,33 @@ class TestRazorpaySettlementAgent(unittest.TestCase):
         self.assertGreater(len(result["recovery_options"]), 0)
         self.assertTrue(result.get("retry_safe"), "Timeout failures should allow safe retry")
 
+    def test_spend_velocity_guard_blocks_runaway_transactions(self):
+        """Spend-velocity guard must block transactions when rolling 10-minute cap is exceeded."""
+        # 1st order: ₹65,000 (Passes)
+        res1 = self.agent.validate_and_create_order(SAMPLE_PRODUCT, 65000.0, idempotency_key="vel-tx-1")
+        self.assertEqual(res1["status"], "BOUNDED_VERIFIED")
+
+        # 2nd order: ₹65,000 (Passes, rolling total ₹130,000 <= ₹150,000 cap)
+        res2 = self.agent.validate_and_create_order(SAMPLE_PRODUCT, 65000.0, idempotency_key="vel-tx-2")
+        self.assertEqual(res2["status"], "BOUNDED_VERIFIED")
+
+        # 3rd order: ₹65,000 (Blocks: rolling total ₹195,000 > ₹150,000 velocity limit)
+        res3 = self.agent.validate_and_create_order(SAMPLE_PRODUCT, 65000.0, idempotency_key="vel-tx-3")
+        self.assertEqual(res3["status"], "VELOCITY_LIMIT_EXCEEDED")
+        self.assertEqual(res3["failure_code"], "VELOCITY_LIMIT_EXCEEDED")
+
+    def test_route_multi_vendor_splits(self):
+        """Razorpay Route must calculate exact 85% OEM / 10% Distributor / 5% Platform splits."""
+        # Amount ₹65,000 is within nominal price envelope [₹61,650 – ₹78,775]
+        result = self.agent.validate_and_create_order(SAMPLE_PRODUCT, 65000.0, idempotency_key="route-tx-1")
+        self.assertEqual(result["status"], "BOUNDED_VERIFIED")
+        self.assertIn("route_transfers", result)
+        splits = result["route_transfers"]["splits"]
+        self.assertEqual(len(splits), 3)
+        self.assertEqual(splits[0]["amount_inr"], 55250.0)  # 85% of 65,000
+        self.assertEqual(splits[1]["amount_inr"], 6500.0)   # 10% of 65,000
+        self.assertEqual(splits[2]["amount_inr"], 3250.0)   # 5% of 65,000
+
     def test_cryptographic_signature_format(self):
         """Signatures must follow SIG-SHA256 format for governance."""
         result = self.agent.validate_and_create_order(SAMPLE_PRODUCT, 68500.0)

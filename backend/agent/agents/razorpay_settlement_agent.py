@@ -41,6 +41,11 @@ class RazorpaySettlementAgent(BaseAgent):
     # Price envelope bounds: (min_factor, max_factor)
     PRICE_ENVELOPE = (0.90, 1.15)  # ±10% below, +15% above nominal
 
+    # Real-time Spend-Velocity Anomaly Guard (Rolling 10-minute window)
+    VELOCITY_WINDOW_SECONDS = 600  # 10 minutes
+    MAX_VELOCITY_AMOUNT_INR = 150_000  # Max ₹1,50,000 in rolling 10m
+    MAX_VELOCITY_COUNT = 3  # Max 3 high-value transactions in rolling 10m
+
     def __init__(self):
         super().__init__(
             name="Razorpay Settlement Guardrail",
@@ -50,6 +55,52 @@ class RazorpaySettlementAgent(BaseAgent):
         )
         # In-memory idempotency store (production would use Redis/DB)
         self._processed_orders: Dict[str, Dict] = {}
+        # Ring buffer for spend-velocity anomaly tracking: List[Tuple[timestamp, amount_inr, order_id]]
+        self._recent_transactions: List[tuple] = []
+
+    def _check_spend_velocity(self, requested_amount_inr: float) -> Dict[str, Any]:
+        """
+        Real-time Spend-Velocity Anomaly Guard:
+        Tracks rolling 10-minute expenditure and transaction frequency.
+        Blocks autonomous runaway spending loops.
+        """
+        now = time.time()
+        # Prune transactions older than the rolling window
+        self._recent_transactions = [
+            tx for tx in self._recent_transactions
+            if now - tx[0] <= self.VELOCITY_WINDOW_SECONDS
+        ]
+
+        rolling_total = sum(tx[1] for tx in self._recent_transactions) + requested_amount_inr
+        rolling_count = len(self._recent_transactions) + 1
+
+        if rolling_total > self.MAX_VELOCITY_AMOUNT_INR:
+            return {
+                "blocked": True,
+                "reason": (
+                    f"Velocity Anomaly Detected: Total rolling spend of ₹{rolling_total:,.0f} "
+                    f"exceeds 10-minute velocity cap of ₹{self.MAX_VELOCITY_AMOUNT_INR:,.0f}."
+                ),
+                "rolling_total_inr": rolling_total,
+                "rolling_count": rolling_count
+            }
+
+        if rolling_count > self.MAX_VELOCITY_COUNT and requested_amount_inr > 30_000:
+            return {
+                "blocked": True,
+                "reason": (
+                    f"Velocity Anomaly Detected: {rolling_count} transactions in {self.VELOCITY_WINDOW_SECONDS//60}m "
+                    f"exceeds maximum permitted transaction frequency."
+                ),
+                "rolling_total_inr": rolling_total,
+                "rolling_count": rolling_count
+            }
+
+        return {
+            "blocked": False,
+            "rolling_total_inr": rolling_total,
+            "rolling_count": rolling_count
+        }
 
     def validate_and_create_order(
         self,
@@ -60,11 +111,12 @@ class RazorpaySettlementAgent(BaseAgent):
         """
         Full settlement pipeline:
         1. Idempotency check (prevent duplicate orders)
-        2. Price envelope validation (Allouah et al. — no hidden markups)
-        3. Risk tier assessment (Paper 2 RQ2)
-        4. Security threat detection (Paper 2 RQ2)
-        5. Order creation with UAP compliance (Paper 2 RQ3)
-        6. Audit trail generation (Paper 2 RQ4)
+        2. Real-time spend-velocity anomaly check (rolling window guard)
+        3. Security threat detection (Paper 2 RQ2)
+        4. Price envelope validation (Allouah et al. — no hidden markups)
+        5. Risk tier assessment & Human Gating
+        6. Multi-vendor Route split calculation (OEM 85%, Distributor 10%, Escrow 5%)
+        7. Razorpay Order creation with UAP compliance & XAI Receipt
         """
         t_start = time.time()
         sku = product_data.get("sku", "UNKNOWN")
@@ -97,11 +149,7 @@ class RazorpaySettlementAgent(BaseAgent):
 
         price_deviation = abs(requested_amount_inr - base_price) / base_price if base_price > 0 else 0
 
-        # ── Step 4: Risk Tier Assessment (Paper 2 RQ2) ───────────────────────
-        risk_tier = self._assess_risk_tier(requested_amount_inr)
-        tier_config = self.RISK_TIERS[risk_tier]
-
-        # ── Step 5: Guardrail Decision ────────────────────────────────────────
+        # ── Step 4: Guardrail Decision ────────────────────────────────────────
         if not is_bounded:
             return self._build_failure_response(
                 sku=sku,
@@ -112,17 +160,42 @@ class RazorpaySettlementAgent(BaseAgent):
                 execution_ms=round((time.time() - t_start) * 1000, 1)
             )
 
-        # ── Step 6: Generate Razorpay Order ──────────────────────────────────
+        # ── Step 5: Real-time Spend-Velocity Anomaly Guard ─────────────────────
+        velocity_check = self._check_spend_velocity(requested_amount_inr)
+        if velocity_check["blocked"]:
+            return self._build_failure_response(
+                sku=sku,
+                failure_code="VELOCITY_LIMIT_EXCEEDED",
+                reason=velocity_check["reason"],
+                velocity_details=velocity_check,
+                execution_ms=round((time.time() - t_start) * 1000, 1)
+            )
+
+        # ── Step 6: Risk Tier Assessment (Paper 2 RQ2) ───────────────────────
+        risk_tier = self._assess_risk_tier(requested_amount_inr)
+        tier_config = self.RISK_TIERS[risk_tier]
+
+        # ── Step 7: Multi-Vendor Route Split Calculation ──────────────────────
+        route_splits = [
+            {"account": "acc_OEM_ApexFlow_01", "role": "OEM Manufacturer (85%)", "amount_inr": round(requested_amount_inr * 0.85, 2)},
+            {"account": "acc_Distributor_Fulfillment_02", "role": "Fulfillment Partner (10%)", "amount_inr": round(requested_amount_inr * 0.10, 2)},
+            {"account": "acc_ProductPilot_Platform_03", "role": "Platform Escrow (5%)", "amount_inr": round(requested_amount_inr * 0.05, 2)}
+        ]
+
+        # ── Step 8: Generate Razorpay Order ──────────────────────────────────
         timestamp = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
         order_id = f"order_RZP_{hashlib.md5(f'{sku}:{timestamp}'.encode()).hexdigest()[:10].upper()}"
         signature = hashlib.sha256(f"RZP_TEST:{order_id}:{requested_amount_inr}:{timestamp}".encode()).hexdigest()[:24]
 
-        # ── Step 7: Generate Audit Trail (Paper 2 RQ4) ───────────────────────
+        # Record transaction in velocity ring buffer
+        self._recent_transactions.append((time.time(), requested_amount_inr, order_id))
+
+        # ── Step 9: Generate Audit Trail (Paper 2 RQ4) ───────────────────────
         audit_trail = self._generate_audit_trail(
             product_data, requested_amount_inr, order_id, risk_tier, price_deviation
         )
 
-        # ── Step 8: LLM-Enhanced Payment Explanation ─────────────────────────
+        # ── Step 10: LLM-Enhanced Payment Explanation ────────────────────────
         payment_explanation = self._generate_payment_explanation(
             product_data, requested_amount_inr, base_price, risk_tier, price_deviation
         )
@@ -150,6 +223,19 @@ class RazorpaySettlementAgent(BaseAgent):
                     "Price envelope is publicly disclosed per Allouah et al. transparency standard. "
                     "No hidden markups applied."
                 )
+            },
+            # Real-time Spend Velocity
+            "velocity_guard": {
+                "status": "COMPLIANT_ACTIVE",
+                "rolling_10m_spend_inr": velocity_check["rolling_total_inr"],
+                "rolling_10m_cap_inr": self.MAX_VELOCITY_AMOUNT_INR,
+                "rolling_tx_count": velocity_check["rolling_count"]
+            },
+            # Multi-Vendor Route Splits
+            "route_transfers": {
+                "enabled": True,
+                "transfer_group": f"trgrp_{order_id[10:]}",
+                "splits": route_splits
             },
             # Risk model (Paper 2 RQ2)
             "risk_assessment": {
@@ -379,6 +465,7 @@ Be clear and merchant-friendly. Never mention Gemini."""
         return {
             "agent": self.name,
             "status": failure_code,
+            "failure_code": failure_code,
             "sku": sku,
             "authorized_amount": 0,
             "reason": reason,
