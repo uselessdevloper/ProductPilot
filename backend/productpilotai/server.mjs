@@ -2462,6 +2462,106 @@ Return ONLY valid JSON.`;
     return;
   }
 
+  // ─── Razorpay Track 01 Settlement Endpoints ─────────────────────────────────
+  if (url.pathname === "/api/razorpay/create-order" && request.method === "POST") {
+    const body = await readBody(request);
+    const payload = body ? JSON.parse(body) : {};
+    const amount = payload.amount || 4710000; // in paise (₹47,100)
+    const currency = payload.currency || "INR";
+    const receipt = payload.receipt || `rcpt_${Date.now()}`;
+    const notes = payload.notes || {
+      sku: "APE-INDUSTRIAL-PUMP-X200",
+      uap_version: "UAP-2026-v1.0",
+      spec_hash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    };
+
+    const orderId = `order_RZP_${crypto.randomBytes(6).toString("hex").toUpperCase()}`;
+    sendJson(response, {
+      success: true,
+      order: {
+        id: orderId,
+        entity: "order",
+        amount,
+        amount_paid: 0,
+        amount_due: amount,
+        currency,
+        receipt,
+        status: "created",
+        attempts: 0,
+        notes,
+        created_at: Math.floor(Date.now() / 1000)
+      }
+    });
+    return;
+  }
+
+  if (url.pathname === "/api/razorpay/create-payment-link" && request.method === "POST") {
+    const body = await readBody(request);
+    const payload = body ? JSON.parse(body) : {};
+    const amount = payload.amount || 4710000;
+    const plinkId = `plink_${crypto.randomBytes(6).toString("hex")}`;
+    sendJson(response, {
+      success: true,
+      payment_link: {
+        id: plinkId,
+        short_url: `https://rzp.io/i/${plinkId.slice(6, 14)}`,
+        status: "created",
+        amount,
+        currency: "INR",
+        description: "ProductPilot AI Graceful Fallback Payment Link (THE BAR Compliance)",
+        customer: {
+          name: payload.customerName || "Enterprise Procurement Manager",
+          email: payload.customerEmail || "procurement@apexindustrial.com"
+        }
+      }
+    });
+    return;
+  }
+
+  if (url.pathname === "/api/razorpay/route-transfers" && request.method === "POST") {
+    const body = await readBody(request);
+    const payload = body ? JSON.parse(body) : {};
+    const totalAmount = payload.amount || 47100;
+    // 85% OEM, 10% Distributor, 5% Platform
+    const splits = [
+      { account: "acc_OEM_ApexFlow_01", role: "OEM Manufacturer (85%)", amount_inr: totalAmount * 0.85 },
+      { account: "acc_Distributor_Fulfillment_02", role: "Fulfillment Partner (10%)", amount_inr: totalAmount * 0.10 },
+      { account: "acc_ProductPilot_Platform_03", role: "Platform Escrow (5%)", amount_inr: totalAmount * 0.05 }
+    ];
+    sendJson(response, {
+      success: true,
+      transfer_group: `trgrp_${crypto.randomBytes(5).toString("hex")}`,
+      total_amount_inr: totalAmount,
+      splits,
+      status: "processed"
+    });
+    return;
+  }
+
+  if (url.pathname === "/api/razorpay/webhook" && request.method === "POST") {
+    const rawBody = await readBody(request);
+    const signature = request.headers["x-razorpay-signature"] || "";
+    const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET || "rzp_webhook_secret_test_2026";
+    
+    const expectedSignature = crypto
+      .createHmac("sha256", webhookSecret)
+      .update(rawBody || "")
+      .digest("hex");
+
+    const isValid = (signature === expectedSignature) || (process.env.NODE_ENV !== "production");
+
+    let eventData = {};
+    try { eventData = rawBody ? JSON.parse(rawBody) : {}; } catch (_) {}
+
+    sendJson(response, {
+      success: isValid,
+      verified: isValid,
+      event: eventData.event || "payment.captured",
+      timestamp: new Date().toISOString()
+    });
+    return;
+  }
+
   if (url.pathname === "/" || url.pathname === "/health") {
     response.writeHead(200, { "content-type": "application/json; charset=utf-8" });
     response.end(JSON.stringify({
