@@ -1,14 +1,14 @@
 """
 ProductPilot AI — Multi-Agent Orchestration Coordinator (Razorpay Track 01)
 
-Research-Paper Implementation Summary:
-  Stage 1 (Ingestion):   Authority-weighted source ranking — Allouah et al.
-  Stage 2 (Extraction):  Grounded citations + subjective-need resolution — Zeng et al. / Dammu et al.
-  Stage 3 (Enrichment):  Multi-agent RAG + unit-conversion sub-agent — Walmart ARAG / Maragheh & Deldjoo
-  Stage 4 (Validation):  Multi-signal accountability chain — Allouah et al. / Paper 2 RQ2
-  Stage 5 (Commerce):    Intent-based routing + AI-buyer-optimized content — Palumbo et al.
-  Stage 6 (Explainability): Full citation experience + XAI trust score — Zeng et al. / Paper 2 RQ4
-  Stage 7 (Settlement):  Tiered money-action safety model + audit trail — Paper 2 RQ2/RQ4
+Engineering Implementation Summary:
+  Stage 1 (Ingestion):   Bayesian authority-weighted source ranking & citable provenance
+  Stage 2 (Extraction):  Grounded spatial citations, bounding boxes & physical boundary checks
+  Stage 3 (Enrichment):  ETIM 8.0 & UNSPSC taxonomy mapping + dual-unit conversion
+  Stage 4 (Validation):  Probabilistic conflict arbitration & deadlocked dispute escalation
+  Stage 5 (Commerce):    Intent-based task routing + multi-channel syndication scoring
+  Stage 6 (Explainability): Multi-dimensional XAI trust scoring + SHA-256 state attestation
+  Stage 7 (Settlement):  Tiered money-action guardrails + Razorpay programmatic order creation
 """
 
 import json

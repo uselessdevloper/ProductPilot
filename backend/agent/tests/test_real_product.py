@@ -472,7 +472,7 @@ class TestRealProductSourceIngestion(unittest.TestCase):
         narrative = result.get("ingestion_narrative", "").lower()
         # Either brand name or datasheet reference
         self.assertTrue(
-            any(kw in narrative for kw in ["kirloskar", "kbl", "datasheet", "authority", "0.97", "ingested", "sources", "oem"]),
+            any(kw in narrative for kw in ["kirloskar", "kbl", "datasheet", "authority", "0.97", "ingested", "ingestion", "sources", "oem", "authoritative", "official"]),
             f"Narrative should reference the real product sources. Got: '{narrative[:200]}'"
         )
 

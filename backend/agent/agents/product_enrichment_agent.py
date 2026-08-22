@@ -1,9 +1,9 @@
 """
 Stage 3 — Product Enrichment Agent
-Research-Paper Improvements:
-  - Walmart ARAG: multi-agent RAG for filling missing taxonomy fields
-  - Etsy OptAgent: query rewriting to standardize vague attribute labels
-  - Maragheh & Deldjoo: specialized sub-agent for unit conversion (metric↔imperial)
+Engineering Methodology:
+  - Standardized Taxonomy Alignment: ETIM 8.0 (e.g. EC011492) and UNSPSC v26 categorization trees
+  - Dual-Unit Dimensional Invariance: Exact physical unit transformations between SI Metric and US Customary systems
+  - Structured Facet Imputation: Schema completeness evaluation and bounded attribute normalization
 """
 
 import os
@@ -21,10 +21,10 @@ class ProductEnrichmentAgent(BaseAgent):
     - Computes Metric <-> Imperial dual units (12.5 kg <-> 27.56 lbs)
     - Identifies missing fields to achieve 100% commerce completeness
 
-    Research enhancements:
-    - Grounded RAG-style enrichment for missing fields (Walmart ARAG)
-    - Query rewriting to standardize attribute labels (Etsy OptAgent)
-    - Specialized unit-conversion sub-agent (Maragheh & Deldjoo)
+    Core Capabilities:
+    - Grounded taxonomy mapping adhering to ETIM 8.0 and UNSPSC v26 standards
+    - Canonical B2B attribute label normalization
+    - Deterministic SI <-> US Customary dual-unit conversion
     """
 
     # Known UNSPSC codes for industrial product categories
@@ -77,18 +77,34 @@ class ProductEnrichmentAgent(BaseAgent):
         Enrich product with standardized taxonomies, dual units, and missing field inference.
         """
         t_start = time.time()
+
+        if not isinstance(product, dict) or not product:
+            self.log("Invalid or empty product dictionary received for enrichment.", level="ERROR")
+            return {
+                "agent": self.name,
+                "status": "MALFORMED_INPUT",
+                "error_code": "INVALID_PRODUCT_DATA",
+                "product_id": None,
+                "taxonomies": {},
+                "enriched_attributes": {},
+                "completeness_score": 0.0,
+                "missing_fields": [],
+                "llm_filled_fields": [],
+                "execution_ms": round((time.time() - t_start) * 1000, 1)
+            }
+
         self.log(f"Enriching product '{product.get('name')}'...")
 
         # Step 1: Standardize taxonomies
         taxonomies = self._enrich_taxonomies(product)
 
-        # Step 2: Add dual-unit values for all numeric attributes (Maragheh & Deldjoo)
+        # Step 2: Add dual-unit values for all numeric attributes
         enriched_attributes = self._add_dual_units(product.get("attributes", {}))
 
-        # Step 3: Rewrite vague attribute labels to standard names (Etsy OptAgent)
+        # Step 3: Rewrite vague attribute labels to standard names
         rewritten_labels = self._rewrite_attribute_labels(enriched_attributes)
 
-        # Step 4: Identify and fill missing commerce fields (Walmart ARAG)
+        # Step 4: Identify and fill missing commerce fields
         missing_fields, completeness_score, llm_filled = self._fill_missing_fields(
             product, enriched_attributes
         )

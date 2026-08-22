@@ -1,10 +1,9 @@
 """
 Stage 5 — Commerce Intelligence Agent
-Research-Paper Improvements:
-  - Palumbo et al.: intent-based routing — detects merchant intent and routes to right action
-  - Dammu et al.: subjective-to-commercial translation (e.g. "suitable for food processing" → SEO keywords)
-  - Allouah et al.: position-bias-aware title generation for AI buyer discoverability
-  - Paper 2 (RQ3): multi-channel syndication readiness assessment
+Engineering Methodology:
+  - Intent-Driven Task Routing: Natural language intent classification mapped to dynamic downstream agent execution graphs
+  - Parametric B2B Copy Generation: Grounded attribute-to-value proposition translation for technical buyer discovery
+  - Multi-Channel Syndication Readiness: Automated schema validation across SAP Commerce, Shopify B2B, Akeneo, and Razorpay
 """
 
 import os
@@ -22,11 +21,11 @@ class CommerceIntelligenceAgent(BaseAgent):
     - Value propositions & engineering feature bullets
     - SEO search keywords and multi-channel readiness ratings
 
-    Research enhancements:
-    - Intent-based routing for merchant workflows (Palumbo et al.)
-    - Subjective-to-commercial translation for broader discovery (Dammu et al.)
-    - AI-buyer-optimized titles without misleading sponsored bias (Allouah et al.)
-    - Syndication readiness for multiple commerce channels (Paper 2 RQ3)
+    Core Capabilities:
+    - Intent-based dynamic routing for merchant procurement workflows
+    - Subjective constraint translation to verifiable technical commerce facets
+    - Multi-channel B2B catalog syndication scoring (SAP, Shopify B2B, Akeneo, Mirakl)
+    - Automated Razorpay checkout payload preparation
     """
 
     # Channel readiness requirements
@@ -38,7 +37,7 @@ class CommerceIntelligenceAgent(BaseAgent):
         "razorpay_checkout":  ["sku", "name", "price_inr", "currency"]
     }
 
-    # Intent detection signals (Palumbo et al.)
+    # Intent detection signals
     INTENT_SIGNALS = {
         "catalog_publish": ["publish", "list", "syndicate", "upload", "add to"],
         "price_negotiation": ["price", "discount", "negotiate", "quote", "INR"],
@@ -63,21 +62,37 @@ class CommerceIntelligenceAgent(BaseAgent):
     ) -> Dict[str, Any]:
         """
         Generate a complete commerce intelligence profile.
-        Routes additional actions based on detected merchant intent (Palumbo et al.).
+        Routes additional actions based on detected merchant intent.
         """
         t_start = time.time()
+
+        if not isinstance(product, dict) or not product:
+            self.log("Invalid or empty product received for commerce profile generation.", level="ERROR")
+            return {
+                "agent": self.name,
+                "status": "MALFORMED_INPUT",
+                "error_code": "INVALID_PRODUCT_DATA",
+                "product_id": None,
+                "b2b_title": "",
+                "short_description": "",
+                "channels": {},
+                "razorpay_ready": {"ready": False},
+                "detected_intent": "catalog_publish",
+                "execution_ms": round((time.time() - t_start) * 1000, 1)
+            }
+
         self.log(f"Generating commerce profile for '{product.get('name')}'...")
 
-        # Detect merchant intent (Palumbo et al.)
+        # Detect merchant intent
         detected_intent = self._detect_intent(merchant_intent or product.get("description", ""))
 
-        # Generate AI-buyer-optimized B2B content (Allouah et al.)
+        # Generate AI-buyer-optimized B2B content
         b2b_content = self._generate_b2b_content(product)
 
-        # Translate subjective needs to SEO/commerce keywords (Dammu et al.)
+        # Translate subjective needs to SEO/commerce keywords
         subjective_keywords = self._translate_subjective_to_keywords(product)
 
-        # Assess multi-channel readiness (Paper 2 RQ3)
+        # Assess multi-channel readiness
         channel_readiness = self._assess_channel_readiness(product, b2b_content)
 
         # Generate Razorpay-ready commerce data
@@ -98,7 +113,6 @@ class CommerceIntelligenceAgent(BaseAgent):
             "description": b2b_content.get("short_description", product.get("description", "")),
             "channels": channel_readiness,
             "razorpay_ready": razorpay_data,
-            # Intent-based routing (Palumbo et al.)
             "detected_intent": detected_intent,
             "intent_routing": self._get_intent_routing(detected_intent),
             "status": "COMMERCE_READY" if all(

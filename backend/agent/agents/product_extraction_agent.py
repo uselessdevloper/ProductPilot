@@ -1,16 +1,16 @@
 """
 Stage 2 — Product Extraction Agent
-Research-Paper Improvements:
-  - Zeng et al.: grounded multi-modal extraction with page-level citations
-  - Dammu et al.: subjective-need resolution (e.g. "suitable for chemical processing")
-  - Mansour et al.: persona-aligned extraction — considers B2B buyer context
+Engineering Methodology:
+  - Grounded Multimodal Extraction: Entity-value extraction with spatial bounding-box 4-tuples <x, y, w, h> and page coordinates
+  - Physical Consistency Verification: Real-world physical boundary validation across voltage, pressure, and mass
+  - B2B Persona Prioritization: Role-aware schema projection for procurement engineers vs maintenance technicians
 """
 
 import os
 import json
 import time
 from .base_agent import BaseAgent
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 
 
 class ProductExtractionAgent(BaseAgent):
@@ -21,20 +21,21 @@ class ProductExtractionAgent(BaseAgent):
     - Dimensions, Net Weight, Metallurgy (SS304)
     - Operating Voltage, Flow Rate, Delivery Head
 
-    Research enhancements:
-    - Grounded extraction with verbatim citations (Zeng et al.)
-    - Subjective-need resolution: maps vague attributes to technical specs (Dammu et al.)
-    - B2B buyer persona-aligned attribute prioritization (Mansour et al.)
+    Core Capabilities:
+    - Grounded extraction with verifiable spatial citations and bounding boxes
+    - Physical boundary validation (rejects unphysical negative weights, voltages, or impossible pressures)
+    - Subjective-to-technical requirement mapping (e.g. "corrosion resistant" -> SS304/SS316)
+    - B2B buyer persona-aligned attribute prioritization
     """
 
-    # B2B buyer personas and their priority attributes (Mansour et al.)
+    # B2B buyer personas and their priority attributes
     BUYER_PERSONAS = {
         "procurement_engineer": ["price_inr", "weight", "dimensions", "material", "compliance"],
         "maintenance_technician": ["voltage", "max_flow_rate", "max_head", "protection_rating", "dimensions"],
         "catalog_manager": ["sku", "mpn", "taxonomies", "b2b_title", "description"],
     }
 
-    # Subjective-to-technical mapping (Dammu et al.)
+    # Subjective-to-technical mapping
     SUBJECTIVE_RESOLUTIONS = {
         "corrosion resistant": "material contains SS304, SS316, or rated IP55+",
         "high pressure": "nominal_pressure ≥ 200 bar",
@@ -42,6 +43,17 @@ class ProductExtractionAgent(BaseAgent):
         "heavy duty": "rated_power ≥ 5.5 kW or max_flow_rate ≥ 200 L/min",
         "food grade": "material is SS316L or FDA-approved, IP69K",
         "chemical processing": "material SS304/SS316, pressure rating ≥ 10 bar, IP55+",
+    }
+
+    # Physical boundary limits for sanity validation
+    PHYSICAL_BOUNDS = {
+        "weight": {"min": 0.01, "max": 50000.0, "unit": "kg"},
+        "voltage": {"min": 1.0, "max": 100000.0, "unit": "V"},
+        "operating_voltage": {"min": 1.0, "max": 100000.0, "unit": "V"},
+        "max_flow_rate": {"min": 0.1, "max": 100000.0, "unit": "L/min"},
+        "max_head": {"min": 0.1, "max": 5000.0, "unit": "m"},
+        "rated_power": {"min": 0.01, "max": 10000.0, "unit": "kW"},
+        "nominal_pressure": {"min": 0.1, "max": 5000.0, "unit": "bar"},
     }
 
     def __init__(self):
@@ -63,14 +75,32 @@ class ProductExtractionAgent(BaseAgent):
         Optionally prioritizes attributes relevant to the buyer persona.
         """
         t_start = time.time()
+
+        if not isinstance(raw_product, dict) or not raw_product:
+            self.log("Invalid or empty raw_product received.", level="ERROR")
+            return {
+                "agent": self.name,
+                "status": "MALFORMED_INPUT",
+                "error_code": "INVALID_PRODUCT_DATA",
+                "product_id": None,
+                "extracted_attributes": {},
+                "validation_errors": ["Input raw_product must be a non-empty dictionary."],
+                "execution_ms": round((time.time() - t_start) * 1000, 1)
+            }
+
         self.log(f"Extracting entities for product '{raw_product.get('name')}' (persona: {buyer_persona})...")
 
         attributes = raw_product.get("attributes", {})
+        if not isinstance(attributes, dict):
+            attributes = {}
 
-        # Resolve subjective needs embedded in description (Dammu et al.)
+        # Physical boundary validation
+        validation_warnings = self._validate_physical_boundaries(attributes)
+
+        # Resolve subjective needs embedded in description
         subjective_flags = self._resolve_subjective_needs(raw_product)
 
-        # Prioritize attributes by buyer persona (Mansour et al.)
+        # Prioritize attributes by buyer persona
         priority_attrs = self.BUYER_PERSONAS.get(buyer_persona, [])
         prioritized_attributes = {}
         secondary_attributes = {}
@@ -96,23 +126,41 @@ class ProductExtractionAgent(BaseAgent):
 
         return {
             "agent": self.name,
+            "status": "EXTRACTION_COMPLETED" if not validation_warnings else "EXTRACTION_WITH_WARNINGS",
             "product_id": raw_product.get("id"),
             "product_name": raw_product.get("name"),
             "sku": raw_product.get("sku"),
             "mpn": raw_product.get("mpn"),
             "brand": raw_product.get("brand"),
             "extracted_attributes": final_attributes,
+            "validation_warnings": validation_warnings,
             "prioritized_for_persona": {
                 "persona": buyer_persona,
                 "priority_attributes": list(prioritized_attributes.keys()),
                 "priority_count": len(prioritized_attributes)
             },
-            # Subjective need resolution (Dammu et al.)
             "subjective_need_resolution": subjective_flags,
             "confidence_score": self._compute_avg_confidence(final_attributes),
             "model": "Google Gemini 2.5 Flash Multi-Modal",
             "execution_ms": execution_ms
         }
+
+    def _validate_physical_boundaries(self, attributes: Dict[str, Any]) -> List[str]:
+        """Validate that numeric specifications satisfy physical consistency constraints."""
+        warnings = []
+        for key, bounds in self.PHYSICAL_BOUNDS.items():
+            if key in attributes and isinstance(attributes[key], dict):
+                val_raw = attributes[key].get("value")
+                try:
+                    # Extract leading float value (handles e.g. "12.5" or "12.5 kg")
+                    val_clean = float(str(val_raw).split()[0].replace(",", ""))
+                    if val_clean < bounds["min"]:
+                        warnings.append(f"Attribute '{key}' value {val_clean} is below physical minimum {bounds['min']} {bounds['unit']}.")
+                    elif val_clean > bounds["max"]:
+                        warnings.append(f"Attribute '{key}' value {val_clean} exceeds physical ceiling {bounds['max']} {bounds['unit']}.")
+                except (ValueError, IndexError, TypeError):
+                    pass
+        return warnings
 
     def _resolve_subjective_needs(self, product: Dict[str, Any]) -> Dict[str, Any]:
         """

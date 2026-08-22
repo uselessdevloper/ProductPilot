@@ -1,10 +1,9 @@
 """
 Stage 6 — Explainability & Evidence Agent
-Research-Paper Improvements:
-  - Zeng et al.: full citation experience — every claim has source, page, snippet, bounding box
-  - Paper 2 (RQ4): explainable AI — merchant-facing trust score and decision rationale
-  - Paper 2 (RQ2): governance — cryptographic attestation of the golden record
-  - Allouah et al.: transparency in ranking — expose how source authority influenced decisions
+Engineering Methodology:
+  - Verifiable Provenance Citations: Spatial bounding-box coordinates <x, y, w, h>, page index, and verbatim quote grounding
+  - Multi-Dimensional Trust Scoring: Composite metric balancing grounding coverage, confidence, conflict resolution, and authority
+  - Cryptographic State Attestation: Immutable SHA-256 fingerprinting binding catalog parameters to transaction orders
 """
 
 import os
@@ -23,11 +22,11 @@ class ExplainabilityEvidenceAgent(BaseAgent):
     - Verbatim quoted excerpts and bounding-box coordinates
     - Confidence scores and cryptographic audit trail
 
-    Research enhancements:
-    - Full citation experience with source hierarchy (Zeng et al.)
-    - XAI trust score with per-attribute explanation (Paper 2 RQ4)
-    - Governance attestation with SHA-256 fingerprint (Paper 2 RQ2)
-    - Authority ranking transparency (Allouah et al.)
+    Core Capabilities:
+    - Verifiable citation extraction with source authority tracking
+    - Explainable AI (XAI) composite trust score derivation
+    - Cryptographic SHA-256 state attestation for golden commerce records
+    - Attestation rejection when catalog records lack primary provenance
     """
 
     def __init__(self):
@@ -45,24 +44,49 @@ class ExplainabilityEvidenceAgent(BaseAgent):
         Generate a full citation package and cryptographic attestation.
         """
         t_start = time.time()
+
+        if not isinstance(product, dict) or not product:
+            self.log("Invalid or empty product dictionary received for evidence grounding.", level="ERROR")
+            return {
+                "agent": self.name,
+                "status": "ATTESTATION_REJECTED",
+                "error_code": "INVALID_PRODUCT_DATA",
+                "product_id": None,
+                "grounded_citations_count": 0,
+                "ungrounded_count": 0,
+                "citations": [],
+                "ungrounded_attributes": [],
+                "authority_ranking": [],
+                "trust_score": {"overall_score": 0, "components": {}, "label": "REJECTED"},
+                "merchant_explanation": "Attestation rejected: Product data is missing or empty.",
+                "attestation": {"auditable": False, "status": "REJECTED"},
+                "execution_ms": round((time.time() - t_start) * 1000, 1)
+            }
+
         self.log(f"Generating grounded evidence for '{product.get('name')}'...")
 
         citations = []
         ungrounded = []
         authority_ranking = []
 
-        for key, attr in product.get("attributes", {}).items():
+        attributes = product.get("attributes", {})
+        if not isinstance(attributes, dict):
+            attributes = {}
+
+        for key, attr in attributes.items():
+            if not isinstance(attr, dict):
+                continue
             prov = attr.get("provenance", {})
 
             if prov and prov.get("source_name"):
-                # Fully grounded citation (Zeng et al.)
+                # Fully grounded citation
                 citation = {
                     "attribute": key,
                     "attribute_label": attr.get("name", key),
                     "value": attr.get("value"),
                     "unit": attr.get("unit", ""),
                     "alt_value": attr.get("alt_value"),
-                    # Full citation chain (Zeng et al.)
+                    # Full citation chain
                     "citation": {
                         "source_id": prov.get("source_id"),
                         "source_name": prov.get("source_name"),
@@ -82,7 +106,7 @@ class ExplainabilityEvidenceAgent(BaseAgent):
                 }
                 citations.append(citation)
 
-                # Authority ranking entry (Allouah et al.)
+                # Authority ranking entry
                 conflict = attr.get("conflict_details", {})
                 if conflict:
                     for src in conflict.get("sources", []):
@@ -102,19 +126,21 @@ class ExplainabilityEvidenceAgent(BaseAgent):
                     "recommendation": "Seek primary source documentation for this attribute"
                 })
 
-        # Compute overall XAI trust score (Paper 2 RQ4)
+        # Compute overall XAI trust score
         trust_score = self._compute_trust_score(citations, ungrounded, product)
 
-        # Generate merchant-facing explanation (Paper 2 RQ4)
+        # Generate merchant-facing explanation
         merchant_explanation = self._generate_merchant_explanation(citations, trust_score, product)
 
-        # Generate governance attestation (Paper 2 RQ2)
+        # Generate governance attestation
         attestation = self._generate_attestation(product, citations, trust_score)
+
+        status = "ATTESTED" if trust_score["overall_score"] >= 90 else ("PARTIALLY_ATTESTED" if trust_score["overall_score"] >= 50 else "ATTESTATION_REJECTED")
 
         execution_ms = round((time.time() - t_start) * 1000, 1)
         self.log(
             f"Evidence grounding complete: {len(citations)} cited, {len(ungrounded)} ungrounded, "
-            f"trust={trust_score['overall_score']}%, {execution_ms}ms"
+            f"trust={trust_score['overall_score']}%, status={status}, {execution_ms}ms"
         )
 
         return {
@@ -124,14 +150,11 @@ class ExplainabilityEvidenceAgent(BaseAgent):
             "ungrounded_count": len(ungrounded),
             "citations": citations,
             "ungrounded_attributes": ungrounded,
-            # Authority ranking transparency (Allouah et al.)
             "authority_ranking": authority_ranking,
-            # XAI trust score (Paper 2 RQ4)
             "trust_score": trust_score,
             "merchant_explanation": merchant_explanation,
-            # Governance attestation (Paper 2 RQ2)
             "attestation": attestation,
-            "status": "ATTESTED" if trust_score["overall_score"] >= 90 else "PARTIALLY_ATTESTED",
+            "status": status,
             "execution_ms": execution_ms
         }
 
@@ -223,17 +246,20 @@ Write a 3-sentence merchant-friendly explanation of:
 
 Be specific about sources. Never mention Gemini."""
 
-            return self.call_llm(prompt, temperature=0.4, max_tokens=300)
+            explanation = self.call_llm(prompt, temperature=0.4, max_tokens=300)
+            if explanation and len(explanation.strip()) >= 20:
+                return explanation.strip()
 
         except Exception as e:
             self.log(f"Merchant explanation generation failed: {e}", level="WARN")
-            score = trust_score["overall_score"]
-            return (
-                f"This product record achieves a trust score of {score}% based on "
-                f"{len(citations)} grounded citations from authoritative sources. "
-                f"Key specifications are backed by primary OEM documentation with verified page references. "
-                f"{'This record is ready for commerce publication.' if score >= 90 else 'Some attributes require additional source verification before publication.'}"
-            )
+        
+        score = trust_score["overall_score"]
+        return (
+            f"This product record achieves a trust score of {score}% based on "
+            f"{len(citations)} grounded citations from authoritative sources. "
+            f"Key specifications are backed by primary OEM documentation with verified page references. "
+            f"{'This record is ready for commerce publication.' if score >= 90 else 'Some attributes require additional source verification before publication.'}"
+        )
 
     def _generate_attestation(
         self,
@@ -243,15 +269,14 @@ Be specific about sources. Never mention Gemini."""
     ) -> Dict[str, Any]:
         """
         Generate a cryptographic attestation for the product golden record.
-        Implements Paper 2 RQ2's governance and accountability requirement.
+        Implements governance and accountability requirements.
         """
-        # Create a stable fingerprint of the verified data
+        # Create a stable fingerprint of the verified data (deterministic)
         fingerprint_data = json.dumps({
             "product_id": product.get("id"),
             "sku": product.get("sku"),
             "grounded_attrs": sorted([c["attribute"] for c in citations]),
-            "trust_score": trust_score["overall_score"],
-            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+            "trust_score": trust_score["overall_score"]
         }, sort_keys=True)
 
         sha256 = hashlib.sha256(fingerprint_data.encode()).hexdigest()
